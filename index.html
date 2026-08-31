@@ -74,10 +74,9 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
 
 /* ===== Hero ===== */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
-.hero-media{position:absolute;inset:0;z-index:0;will-change:transform}
-.hero-media img{position:absolute;inset:0;width:100%;height:120%;object-fit:cover;
-  animation:kenburns 22s var(--ease) infinite alternate}
-@keyframes kenburns{from{transform:scale(1.08) translate(-1%,-1%)}to{transform:scale(1.22) translate(2%,2%)}}
+.hero-media{position:absolute;inset:0;z-index:0;will-change:transform;background:#000}
+.hero-video{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover}
+.hero-media img{position:absolute;inset:0;width:100%;height:120%;object-fit:cover}
 .hero-scrim{position:absolute;inset:0;z-index:1;
   background:linear-gradient(90deg,rgba(15,7,4,.90) 0%,rgba(15,7,4,.55) 45%,rgba(15,7,4,.15) 75%),
              linear-gradient(0deg,rgba(15,7,4,.95),transparent 55%)}
@@ -133,7 +132,8 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
 
 /* ===== Scrub (scroll-scrubbed "video") ===== */
 .scrub{position:relative;height:340vh}
-.scrub-sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
+.scrub-sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;background:#000}
+.scrub-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
 .scrub-layer{position:absolute;inset:0;background-size:cover;background-position:center;
   opacity:0;transition:opacity .1s linear;will-change:opacity,transform}
 .scrub-sticky::after{content:"";position:absolute;inset:0;
@@ -305,7 +305,11 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
 <!-- HERO -->
 <header class="hero">
   <div class="hero-media" id="heroMedia">
-    <img src="assets/hero.jpg" alt="Közde dönen döneri ustalıkla dilimleyen usta">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto"
+           poster="assets/hero-poster.jpg" aria-label="Coss lezzetleri tanıtım videosu">
+      <source src="assets/hero.webm" type='video/webm; codecs="vp9"'>
+      <source src="assets/hero.mp4" type='video/mp4; codecs="avc1.640020"'>
+    </video>
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-embers" id="embers" aria-hidden="true"></div>
@@ -338,13 +342,15 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
 <!-- SCRUB "VIDEO" -->
 <section class="scrub" id="scrub" aria-label="Lezzet hikayesi">
   <div class="scrub-sticky">
-    <div class="scrub-layer" data-i="0" style="background-image:url(assets/hero.jpg)"></div>
-    <div class="scrub-layer" data-i="1" style="background-image:url(assets/tavuk-burger.jpg)"></div>
-    <div class="scrub-layer" data-i="2" style="background-image:url(assets/karisik-sandvic.jpg)"></div>
+    <video id="scrubVideo" class="scrub-video" muted playsinline preload="auto"
+           poster="assets/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/hero-scrub.webm" type='video/webm; codecs="vp9"'>
+      <source src="assets/hero-scrub.mp4" type='video/mp4; codecs="avc1.640020"'>
+    </video>
     <div class="scrub-words">
-      <div class="scrub-eyebrow" id="scrubEyebrow">01 · OCAK BAŞI</div>
-      <div class="scrub-word" id="scrubWord">KÖZDE <span class="stroke">PİŞER</span></div>
-      <p class="scrub-caption" id="scrubCaption">Her dilim, gün boyu dönen közün üzerinde kıvamına gelir.</p>
+      <div class="scrub-eyebrow" id="scrubEyebrow">01 · TAZE BAŞLANGIÇ</div>
+      <div class="scrub-word" id="scrubWord">TAPTAZE <span class="stroke">MALZEME</span></div>
+      <p class="scrub-caption" id="scrubCaption">Kaydır ve izle — her şey en taze malzemeyle başlar.</p>
     </div>
     <div class="scrub-progress" id="scrubProgress"></div>
   </div>
@@ -544,6 +550,10 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
   /* year */
   document.getElementById('yr').textContent = new Date().getFullYear();
 
+  /* reduced motion: keep hero video still on its poster frame */
+  var heroVid = document.querySelector('.hero-video');
+  if(reduce && heroVid){ heroVid.removeAttribute('autoplay'); heroVid.removeAttribute('loop'); try{heroVid.pause();}catch(e){} }
+
   /* nav scroll state */
   var nav = document.getElementById('nav');
   function onScrollNav(){ nav.classList.toggle('scrolled', window.scrollY > 30); }
@@ -582,18 +592,42 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
   var heroMedia = document.getElementById('heroMedia');
   var heroContent = document.getElementById('heroContent');
   var scrub = document.getElementById('scrub');
-  var layers = scrub.querySelectorAll('.scrub-layer');
+  var scrubVideo = document.getElementById('scrubVideo');
   var eyebrow = document.getElementById('scrubEyebrow');
   var word = document.getElementById('scrubWord');
   var caption = document.getElementById('scrubCaption');
   var progress = document.getElementById('scrubProgress');
 
   var frames = [
-    {eye:'01 · OCAK BAŞI', word:'KÖZDE <span class="stroke">PİŞER</span>', cap:'Her dilim, gün boyu dönen közün üzerinde kıvamına gelir.'},
-    {eye:'02 · ÇITIR ÇITIR', word:'ISIRINCA <span class="stroke">ÇITIRDAR</span>', cap:'Çıtır tavuk, eriyen çedar, akan sos — tam kararında.'},
-    {eye:'03 · DOPDOLU', word:'TIKA BASA <span class="stroke">LEZZET</span>', cap:'Sucuk, kaşar ve közlenmiş sebzelerle sonuna kadar dolu.'}
+    {eye:'01 · TAPTAZE', word:'TAPTAZE <span class="stroke">MALZEME</span>', cap:'Her şey en taze malzemeyle başlar — kaydır ve izle.'},
+    {eye:'02 · KÖZDE', word:'TAVUK <span class="stroke">DÖNER</span>', cap:'Marine tavuk, közün üstünde dilim dilim, dumanı üstünde.'},
+    {eye:'03 · SULU', word:'KÖFTE <span class="stroke">BURGER</span>', cap:'Eriyen çedar, sulu köfte — tam kararında pişer.'},
+    {eye:'04 · HEPSİ COSS’TA', word:'DUMANI <span class="stroke">ÜSTÜNDE</span>', cap:'Döner, burger, sandviç ve patates — sıcacık, kapına hazır.'}
   ];
   var curFrame = -1;
+
+  // Scroll-scrub video setup
+  var scrubDur = 0, scrubTarget = 0, scrubHasMeta = false, scrubPrimed = false;
+  function markScrubMeta(){
+    if(!isNaN(scrubVideo.duration) && scrubVideo.duration > 0){
+      scrubDur = scrubVideo.duration; scrubHasMeta = true;
+    }
+  }
+  ['loadedmetadata','durationchange','canplay','loadeddata'].forEach(function(ev){
+    scrubVideo.addEventListener(ev, markScrubMeta);
+  });
+  if(scrubVideo.readyState >= 1) markScrubMeta();  // metadata may already be ready
+  // Prime the paused video once (play→pause) so scroll-seeks actually paint frames
+  function primeScrub(){
+    if(scrubPrimed || reduce) return; scrubPrimed = true;
+    var pr = scrubVideo.play();
+    if(pr && pr.then){ pr.then(function(){ scrubVideo.pause(); }).catch(function(){ scrubPrimed = false; }); }
+    else { try{ scrubVideo.pause(); }catch(e){} }
+  }
+  scrubVideo.addEventListener('loadeddata', primeScrub);
+  ['scroll','pointerdown','touchstart','keydown'].forEach(function(ev){
+    window.addEventListener(ev, primeScrub, {passive:true});
+  });
 
   function clamp(v){ return v<0?0:v>1?1:v; }
 
@@ -615,16 +649,13 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
     var p = clamp((-rect.top)/total);
     if(rect.bottom>0 && rect.top<window.innerHeight){
       progress.style.width = (p*100)+'%';
-      var n = layers.length;
-      /* crossfade layers */
-      var pos = p*(n-1);
-      layers.forEach(function(l, idx){
-        var d = Math.abs(pos-idx);
-        var o = clamp(1-d);
-        l.style.opacity = o;
-        l.style.transform = 'scale('+(1.05 + (p*0.12))+')';
-      });
-      /* switch words */
+      /* scrub the real video timeline with scroll */
+      if(scrubHasMeta && scrubDur){
+        scrubTarget = clamp(p) * (scrubDur - 0.05);
+      }
+      /* subtle zoom for depth */
+      scrubVideo.style.transform = 'scale('+(1.04 + p*0.10)+')';
+      /* switch kinetic words */
       var fi = Math.min(frames.length-1, Math.round(p*(frames.length-1)));
       if(fi!==curFrame){
         curFrame=fi;
@@ -637,6 +668,20 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
     onScrollNav();
     ticking=false;
   }
+
+  /* Smoothly ease the scrub video toward the scroll target (buttery seek) */
+  var scrubCur = 0;
+  function scrubEase(){
+    if(scrubHasMeta){
+      scrubCur += (scrubTarget - scrubCur) * 0.18;
+      if(Math.abs(scrubTarget - scrubCur) < 0.004) scrubCur = scrubTarget;
+      if(scrubVideo.readyState >= 2){
+        try{ scrubVideo.currentTime = scrubCur; }catch(e){}
+      }
+    }
+    requestAnimationFrame(scrubEase);
+  }
+  requestAnimationFrame(scrubEase);
 
   var ticking=false;
   function requestLoop(){ if(!ticking){ ticking=true; requestAnimationFrame(loop);} }
