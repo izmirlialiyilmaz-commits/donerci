@@ -3,541 +3,538 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coss Fast Food — Tavuk & Et Döner, Burger, Sandviç</title>
-<meta name="description" content="Coss Fast Food — közde pişen tavuk döner, et döner, köfte burger, tavuk burger ve karışık sandviç. Yemeksepeti, Trendyol Yemek, Migros Yemek ve Getir ile kapına kadar.">
-<meta name="theme-color" content="#140a06">
+<title>Coss Fast Food — Ateşin Lezzeti</title>
+<meta name="description" content="Coss Fast Food — közde pişen tavuk & et döner, köfte & tavuk burger, karışık sandviç. Dumanı üstünde, kapına kadar. Yemeksepeti, Trendyol Yemek, Migros Yemek, Getir.">
+<meta name="theme-color" content="#080604">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<meta property="og:title" content="Coss Fast Food">
-<meta property="og:description" content="Közde pişen döner, burger ve sandviç. Kapına kadar sıcacık.">
-<meta property="og:image" content="assets/hero.jpg">
+<meta property="og:title" content="Coss Fast Food — Ateşin Lezzeti">
+<meta property="og:description" content="Közde pişen döner, burger ve sandviç. Dumanı üstünde, kapına kadar.">
+<meta property="og:image" content="assets/hero-poster.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&family=Marcellus&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#140a06; --ink2:#20100a; --panel:#1c0d07;
-  --cream:#f7ede1; --cream-dim:#d8c7b4;
-  --ember:#ff5a1f; --ember-deep:#e23412; --gold:#f6b23c; --maroon:#3a0f0a;
-  --glass:rgba(28,14,8,.42); --glass-line:rgba(255,255,255,.14);
-  --shadow:0 30px 80px -30px rgba(0,0,0,.75);
-  --ease:cubic-bezier(.22,.61,.36,1);
+  --noir:#080604; --coal:#100d0a; --espresso:#171310; --card:#1c1712;
+  --cream:#f4ece0; --muted:#a99a86; --muted-2:#7d715f;
+  --gold:#d9b25f; --gold-2:#f2dca2; --gold-deep:#a9812f;
+  --line:rgba(217,178,95,.20); --line-soft:rgba(244,236,224,.10);
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --alt:'Marcellus',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --ease:cubic-bezier(.19,1,.22,1);
+  --ease2:cubic-bezier(.65,.05,.36,1);
+  --maxw:1220px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  font-family:'Inter',system-ui,Segoe UI,Roboto,sans-serif;
-  background:var(--ink); color:var(--cream);
-  -webkit-font-smoothing:antialiased; overflow-x:hidden; line-height:1.6;
+  font-family:var(--sans); background:var(--noir); color:var(--cream);
+  line-height:1.7; -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
-img{max-width:100%;display:block}
+img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;letter-spacing:.5px;text-transform:uppercase}
-.wrap{width:min(1180px,92vw);margin-inline:auto}
-.script{font-family:'Caveat',cursive;text-transform:none;color:var(--gold)}
-.ember-text{color:var(--ember)}
+::selection{background:var(--gold);color:#1a1206}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.04;letter-spacing:-.01em}
+.wrap{width:min(var(--maxw),90vw);margin-inline:auto}
+.serif{font-family:var(--serif)} .italic{font-style:italic}
+.gold{color:var(--gold)}
+.eyebrow{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.eyebrow.center::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
 
-/* ===== Fixed cinematic backdrop (the "moving video" ground) ===== */
-.backdrop{position:fixed;inset:0;z-index:-2;background:var(--ink)}
-.backdrop::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(120% 80% at 50% 0%,rgba(255,90,31,.10),transparent 55%),
-             linear-gradient(180deg,rgba(20,10,6,.4),rgba(20,10,6,.92))}
-.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Cinematic fixed video backdrop */
+.cine{position:fixed;inset:0;z-index:-2;background:#000;overflow:hidden}
+.cine video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.06)}
+.cine-veil{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% 30%,rgba(8,6,4,.35),rgba(8,6,4,.72) 70%,rgba(8,6,4,.92)),
+    linear-gradient(180deg,rgba(8,6,4,.55),rgba(8,6,4,.35) 30%,rgba(8,6,4,.7))}
+.grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;
+  transform:translate(-50%,-50%);pointer-events:none;z-index:1;opacity:0;transition:opacity .5s;
+  background:radial-gradient(circle,rgba(217,178,95,.10),transparent 62%);mix-blend-mode:screen}
 
-/* ===== Nav ===== */
-.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:.4s var(--ease)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;
-  padding:16px 0;transition:.4s var(--ease)}
-.nav.scrolled{background:rgba(16,8,5,.72);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--glass-line)}
-.nav.scrolled .nav-inner{padding:10px 0}
-.logo{display:flex;align-items:center;gap:11px}
-.logo-badge{display:flex;align-items:center;gap:10px;background:#fff;
-  padding:8px 14px 8px 9px;border-radius:15px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
-.logo-mark{width:34px;height:34px;border-radius:10px;flex:0 0 auto;
-  background:linear-gradient(135deg,#ff7a2f,#e23412);display:grid;place-items:center}
-.logo-mark svg{width:22px;height:22px}
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;transition:.5s var(--ease)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 0;transition:.5s var(--ease)}
+.nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);opacity:0;transition:.5s}
+.nav.scrolled{background:rgba(10,8,5,.72);backdrop-filter:blur(18px) saturate(120%)}
+.nav.scrolled::after{opacity:1}
+.nav.scrolled .nav-inner{padding:13px 0}
+.logo{display:flex;align-items:center;gap:13px}
+.logo-badge{display:flex;align-items:center;gap:11px;background:#fff;padding:8px 15px 8px 9px;
+  border-radius:13px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.logo-mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;
+  background:linear-gradient(140deg,#f2c368,#c98a2b)}
+.logo-mark svg{width:21px;height:21px}
 .logo-word{display:flex;flex-direction:column;line-height:1}
-.logo-word b{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:1px;color:#1c0e07}
-.logo-word small{font-size:9px;font-weight:800;letter-spacing:3.5px;color:var(--ember-deep)}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{font-size:14px;font-weight:600;color:var(--cream-dim);transition:.25s}
-.nav-links a:hover{color:#fff}
-.nav-cta{background:linear-gradient(135deg,var(--ember),var(--ember-deep));
-  color:#fff!important;padding:11px 22px;border-radius:100px;font-weight:800;font-size:14px;
-  box-shadow:0 10px 26px -8px var(--ember-deep);transition:.25s var(--ease)}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 16px 34px -8px var(--ember-deep)}
-.burger{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px;
-  border-radius:12px;color:#fff}
+.logo-word b{font-family:var(--serif);font-weight:800;font-size:20px;color:#171310;letter-spacing:.02em}
+.logo-word small{font-family:var(--sans);font-size:8.5px;font-weight:700;letter-spacing:.34em;color:#a9812f}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a.link{font-size:13.5px;font-weight:500;letter-spacing:.04em;color:var(--muted);position:relative;padding:4px 0;transition:.3s}
+.nav-links a.link::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .4s var(--ease)}
+.nav-links a.link:hover{color:var(--cream)} .nav-links a.link:hover::after{width:100%}
+.nav-cta{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--noir);background:linear-gradient(135deg,var(--gold-2),var(--gold));
+  padding:12px 24px;border-radius:100px;transition:.4s var(--ease);box-shadow:0 8px 26px -10px var(--gold-deep)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px var(--gold-deep)}
+.burger{display:none;background:none;border:0;color:var(--cream);width:46px;height:46px;cursor:pointer}
 .burger svg{width:26px;height:26px}
 
-/* ===== Hero ===== */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
-.hero-media{position:absolute;inset:0;z-index:0;will-change:transform;background:#000}
-.hero-video{position:absolute;top:-10%;left:0;width:100%;height:120%;object-fit:cover}
-.hero-media img{position:absolute;inset:0;width:100%;height:120%;object-fit:cover}
-.hero-scrim{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,rgba(15,7,4,.90) 0%,rgba(15,7,4,.55) 45%,rgba(15,7,4,.15) 75%),
-             linear-gradient(0deg,rgba(15,7,4,.95),transparent 55%)}
-.hero-embers{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.ember{position:absolute;bottom:-20px;width:5px;height:5px;border-radius:50%;
-  background:radial-gradient(circle,#ffb463,#ff5a1f);opacity:0;filter:blur(.4px);
-  animation:rise linear infinite}
-@keyframes rise{0%{transform:translateY(0) scale(.6);opacity:0}
-  15%{opacity:.9}100%{transform:translateY(-95vh) scale(1.1);opacity:0}}
-.hero-content{position:relative;z-index:2;padding:120px 0 90px}
-.badge-live{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;color:var(--cream);
-  background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(10px);
-  padding:9px 16px;border-radius:100px}
-.dot{width:9px;height:9px;border-radius:50%;background:#2fd06a;box-shadow:0 0 0 0 rgba(47,208,106,.6);
-  animation:pulse 1.8s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,208,106,.6)}70%{box-shadow:0 0 0 12px rgba(47,208,106,0)}100%{box-shadow:0 0 0 0 rgba(47,208,106,0)}}
-.hero h1{font-size:clamp(3.4rem,11vw,9rem);margin:22px 0 6px;
-  text-shadow:0 18px 50px rgba(0,0,0,.55)}
-.hero h1 .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--gold);text-stroke:2px var(--gold)}
-.hero-sub{font-size:clamp(1.05rem,2.4vw,1.5rem);max-width:36ch;color:var(--cream-dim);
-  margin-bottom:34px}
-.hero-sub b{color:var(--cream)}
-.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:100px;
-  font-weight:800;font-size:15px;letter-spacing:.3px;cursor:pointer;border:0;
-  transition:.3s var(--ease)}
-.btn-primary{background:linear-gradient(135deg,var(--ember),var(--ember-deep));color:#fff;
-  box-shadow:0 18px 40px -14px var(--ember-deep)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 26px 50px -14px var(--ember-deep)}
-.btn-ghost{background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(12px);color:#fff}
-.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
-.hero-stats{display:flex;gap:34px;margin-top:46px;flex-wrap:wrap}
-.hero-stats .s b{font-family:'Anton',sans-serif;font-size:2rem;color:var(--gold);display:block;line-height:1}
-.hero-stats .s span{font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream-dim)}
-.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
-  font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--cream-dim);
-  display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-hint i{width:26px;height:42px;border:2px solid var(--glass-line);border-radius:14px;position:relative}
-.scroll-hint i::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);
-  width:4px;height:8px;border-radius:3px;background:var(--gold);animation:wheel 1.6s infinite}
-@keyframes wheel{0%{opacity:0;top:7px}40%{opacity:1}100%{opacity:0;top:22px}}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:11px;font-family:var(--sans);font-weight:700;
+  font-size:14px;letter-spacing:.06em;padding:17px 34px;border-radius:100px;cursor:pointer;border:0;
+  position:relative;overflow:hidden;transition:.5s var(--ease);text-transform:uppercase}
+.btn svg{width:17px;height:17px;transition:transform .4s var(--ease)}
+.btn-gold{color:#150f06;background:linear-gradient(135deg,var(--gold-2),var(--gold))}
+.btn-gold::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#fff,var(--gold-2));opacity:0;transition:.5s}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 46px -16px var(--gold-deep)}
+.btn-gold:hover svg{transform:translateX(5px)}
+.btn-outline{color:var(--cream);background:transparent;border:1px solid var(--line);backdrop-filter:blur(6px)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-2);transform:translateY(-3px)}
 
-/* ===== Marquee ===== */
-.marquee{background:linear-gradient(90deg,var(--ember-deep),var(--ember));overflow:hidden;
-  padding:14px 0;border-block:2px solid rgba(0,0,0,.15)}
-.marquee-track{display:flex;gap:40px;white-space:nowrap;width:max-content;
-  animation:scrollx 26s linear infinite}
-.marquee span{font-family:'Anton',sans-serif;font-size:1.5rem;letter-spacing:1px;color:#fff;
-  display:inline-flex;align-items:center;gap:40px;text-transform:uppercase}
-.marquee span::after{content:"★";color:var(--gold)}
-@keyframes scrollx{to{transform:translateX(-50%)}}
+/* Hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;text-align:center;
+  padding:130px 0 90px}
+.hero .wrap{position:relative;z-index:2}
+.hero .eyebrow{margin-bottom:26px}
+.hero h1{font-size:clamp(3.2rem,10vw,8.2rem);font-weight:800;letter-spacing:-.02em;
+  text-shadow:0 30px 80px rgba(0,0,0,.5)}
+.hero h1 .row{display:block;overflow:hidden}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.hero h1 .sm{display:block;font-family:var(--sans);font-weight:300;font-size:clamp(.9rem,2.4vw,1.3rem);
+  letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin-top:22px}
+.hero-sub{max-width:52ch;margin:30px auto 40px;font-size:clamp(1.02rem,2.1vw,1.22rem);
+  color:var(--muted);font-weight:400}
+.hero-sub b{color:var(--cream);font-weight:600}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--muted);
+  font-size:10.5px;letter-spacing:.35em;text-transform:uppercase}
+.hero-scroll .bar{width:1px;height:52px;background:linear-gradient(180deg,var(--gold),transparent);
+  position:relative;overflow:hidden}
+.hero-scroll .bar::after{content:"";position:absolute;top:-52px;left:0;width:1px;height:52px;
+  background:linear-gradient(180deg,transparent,var(--gold-2));animation:drop 2.2s var(--ease) infinite}
+@keyframes drop{to{top:52px}}
 
-/* ===== Scrub (scroll-scrubbed "video") ===== */
-.scrub{position:relative;height:340vh}
-.scrub-sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;background:#000}
-.scrub-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
-.scrub-layer{position:absolute;inset:0;background-size:cover;background-position:center;
-  opacity:0;transition:opacity .1s linear;will-change:opacity,transform}
-.scrub-sticky::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(90% 90% at 50% 50%,transparent 30%,rgba(12,6,3,.85));z-index:2}
-.scrub-words{position:relative;z-index:3;text-align:center;padding:0 5vw}
-.scrub-eyebrow{font-size:13px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);
-  margin-bottom:14px;font-weight:800}
-.scrub-word{font-size:clamp(3rem,13vw,11rem);color:#fff;
-  text-shadow:0 20px 60px rgba(0,0,0,.6);min-height:1em}
-.scrub-word .stroke{color:transparent;-webkit-text-stroke:2px #fff}
-.scrub-caption{margin-top:18px;font-size:clamp(1rem,2.2vw,1.35rem);color:var(--cream-dim);max-width:40ch;margin-inline:auto}
-.scrub-progress{position:absolute;left:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--ember));z-index:4;width:0}
+/* Section shell */
+.section{position:relative;z-index:2;padding:130px 0}
+.section.solid{background:var(--noir)}
+.section.panel{background:linear-gradient(180deg,var(--coal),var(--noir))}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);border:0}
+.shead{max-width:820px;margin:0 auto 70px;text-align:center}
+.shead .eyebrow{margin-bottom:22px}
+.shead h2{font-size:clamp(2.5rem,6vw,4.6rem);font-weight:700}
+.shead h2 em{font-style:italic;color:var(--gold);font-weight:500}
+.shead p{margin-top:22px;color:var(--muted);font-size:1.1rem;max-width:60ch;margin-inline:auto}
 
-/* ===== Section shell ===== */
-.section{position:relative;z-index:1;padding:110px 0}
-.section-head{max-width:760px;margin-bottom:56px}
-.eyebrow{display:inline-block;font-size:13px;letter-spacing:4px;text-transform:uppercase;
-  font-weight:800;color:var(--ember);margin-bottom:14px}
-.section h2{font-size:clamp(2.4rem,6vw,4.6rem)}
-.section-head p{margin-top:16px;font-size:1.12rem;color:var(--cream-dim);max-width:56ch}
+/* Story */
+.story{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.story h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.story h2 em{font-style:italic;color:var(--gold);font-weight:500}
+.story p{color:var(--muted);margin-top:24px;font-size:1.08rem}
+.story .kpis{display:flex;gap:44px;margin-top:40px;flex-wrap:wrap}
+.kpi b{font-family:var(--serif);font-size:2.6rem;color:var(--gold);display:block;line-height:1}
+.kpi span{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:6px;display:block}
+.story-media{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;
+  box-shadow:0 50px 100px -30px rgba(0,0,0,.8)}
+.story-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.story-media::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--line);border-radius:8px}
+.story-media .frame{position:absolute;inset:16px;border:1px solid rgba(244,236,224,.25);border-radius:4px;z-index:2;pointer-events:none}
 
-/* ===== Menu grid ===== */
-.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.card{position:relative;border-radius:24px;overflow:hidden;background:var(--glass);
-  border:1px solid var(--glass-line);backdrop-filter:blur(8px);box-shadow:var(--shadow);
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease);transform-style:preserve-3d}
-.card:hover{transform:translateY(-8px)}
-.card-media{position:relative;aspect-ratio:4/3;overflow:hidden}
-.card-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.card:hover .card-media img{transform:scale(1.09)}
-.card-media::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 40%,rgba(16,8,5,.9))}
-.tag{position:absolute;top:14px;left:14px;z-index:2;font-size:11px;font-weight:800;
-  letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;border-radius:100px;
-  background:rgba(255,255,255,.92);color:var(--ember-deep)}
-.card-body{padding:22px}
-.card-body h3{font-size:1.7rem;margin-bottom:6px}
-.card-body p{font-size:.95rem;color:var(--cream-dim);min-height:2.9em}
-.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
-.price{font-family:'Anton',sans-serif;font-size:1.7rem;color:var(--gold)}
-.price small{font-size:.85rem;color:var(--cream-dim);font-family:'Inter';font-weight:600}
-.card-order{font-size:13px;font-weight:800;color:var(--ember);display:inline-flex;gap:6px;align-items:center}
-.card-featured{grid-column:span 1;outline:2px solid rgba(246,178,60,.4)}
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.dish{position:relative;background:var(--card);border:1px solid var(--line-soft);border-radius:6px;
+  overflow:hidden;transition:transform .7s var(--ease),border-color .7s var(--ease),box-shadow .7s var(--ease)}
+.dish:hover{transform:translateY(-10px);border-color:var(--line);box-shadow:0 40px 80px -34px rgba(0,0,0,.9)}
+.dish-media{position:relative;aspect-ratio:5/4;overflow:hidden}
+.dish-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);filter:saturate(1.05)}
+.dish:hover .dish-media img{transform:scale(1.1)}
+.dish-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,16,12,.96))}
+.dish-no{position:absolute;top:16px;left:18px;z-index:2;font-family:var(--serif);font-style:italic;
+  font-size:1.1rem;color:var(--gold-2);opacity:.85}
+.dish-tag{position:absolute;top:16px;right:16px;z-index:2;font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-2);border:1px solid var(--line);padding:6px 11px;border-radius:100px;
+  background:rgba(8,6,4,.5);backdrop-filter:blur(6px)}
+.dish-body{padding:24px 26px 28px;position:relative}
+.dish-body h3{font-size:1.75rem;font-weight:700}
+.dish-body p{color:var(--muted);font-size:.95rem;margin-top:8px;min-height:3em}
+.dish-foot{display:flex;align-items:baseline;justify-content:space-between;margin-top:20px;
+  padding-top:18px;border-top:1px solid var(--line-soft)}
+.dish-price{font-family:var(--serif);font-size:1.7rem;color:var(--gold)}
+.dish-price small{font-family:var(--sans);font-size:.8rem;color:var(--muted-2);font-weight:500}
+.dish-order{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  display:inline-flex;align-items:center;gap:7px;transition:.3s}
+.dish:hover .dish-order{color:var(--gold-2)}
+.dish-order svg{width:14px;height:14px}
 
-/* ===== Value strip ===== */
-.values{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.value{background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(8px);
-  border-radius:20px;padding:30px 24px;text-align:center}
-.value .ico{width:56px;height:56px;margin:0 auto 16px;border-radius:16px;display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(255,90,31,.22),rgba(246,178,60,.15));color:var(--gold)}
-.value .ico svg{width:28px;height:28px}
-.value b{font-family:'Anton',sans-serif;font-size:1.35rem;display:block;margin-bottom:6px}
-.value span{font-size:.92rem;color:var(--cream-dim)}
+/* Interlude (reveals fixed video) */
+.interlude{position:relative;z-index:2;min-height:78svh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:120px 0}
+.interlude::before{content:"";position:absolute;inset:0;background:
+    linear-gradient(180deg,var(--noir),rgba(8,6,4,.35) 22%,rgba(8,6,4,.35) 78%,var(--noir));z-index:-1}
+.interlude q{quotes:none;display:block;font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:clamp(2.2rem,7vw,5.6rem);line-height:1.15;text-shadow:0 20px 60px rgba(0,0,0,.6)}
+.interlude q b{color:var(--gold);font-weight:600}
+.interlude .sub{margin-top:26px;color:var(--muted);letter-spacing:.32em;text-transform:uppercase;font-size:12px}
 
-/* ===== Delivery ===== */
-.delivery{position:relative}
+/* Values */
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:8px;overflow:hidden}
+.value{background:var(--coal);padding:44px 30px;text-align:center;transition:.5s var(--ease)}
+.value:hover{background:var(--espresso)}
+.value .ic{width:52px;height:52px;margin:0 auto 22px;color:var(--gold);display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:50%}
+.value .ic svg{width:24px;height:24px}
+.value h4{font-family:var(--serif);font-size:1.5rem;margin-bottom:10px}
+.value p{color:var(--muted);font-size:.92rem}
+
+/* Delivery */
 .deliver-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.deliver{position:relative;border-radius:22px;padding:30px 24px 26px;overflow:hidden;
-  min-height:210px;display:flex;flex-direction:column;justify-content:space-between;
-  color:#fff;transition:transform .4s var(--ease);border:1px solid rgba(255,255,255,.12)}
-.deliver:hover{transform:translateY(-6px)}
-.deliver::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.10);z-index:0}
-.deliver>*{position:relative;z-index:1}
-.deliver .plat-badge{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.95);
-  display:grid;place-items:center;font-family:'Anton',sans-serif;font-size:1.6rem}
-.deliver h3{font-size:1.5rem;margin-top:auto}
-.deliver small{display:block;font-size:.85rem;opacity:.9;font-weight:600;margin-top:4px}
-.deliver .go{margin-top:16px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-  display:inline-flex;gap:8px;align-items:center}
-.p-yemeksepeti{background:linear-gradient(150deg,#ff2b6d,#c30045)}
-.p-yemeksepeti .plat-badge{color:#ff2b6d}
-.p-trendyol{background:linear-gradient(150deg,#ff8a2a,#f27a1a)}
-.p-trendyol .plat-badge{color:#f27a1a}
-.p-migros{background:linear-gradient(150deg,#ff7a3d,#eb6608)}
-.p-migros .plat-badge{color:#eb6608}
-.p-getir{background:linear-gradient(150deg,#7b5bd6,#5d3ebc)}
-.p-getir .plat-badge{color:#5d3ebc}
+.plat{position:relative;display:block;background:var(--card);border:1px solid var(--line-soft);
+  border-radius:8px;padding:34px 26px 28px;overflow:hidden;transition:.55s var(--ease)}
+.plat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pc,#d9b25f);
+  transform:scaleY(0);transform-origin:top;transition:transform .55s var(--ease)}
+.plat::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .55s var(--ease);
+  background:radial-gradient(120% 90% at 0% 0%,var(--pc-glow,rgba(217,178,95,.14)),transparent 60%)}
+.plat:hover{transform:translateY(-8px);border-color:var(--line)}
+.plat:hover::before{transform:scaleY(1)} .plat:hover::after{opacity:1}
+.plat .pdot{width:11px;height:11px;border-radius:50%;background:var(--pc,#d9b25f);margin-bottom:26px;
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--pc,#d9b25f) 22%,transparent)}
+.plat h3{font-family:var(--serif);font-size:1.55rem;font-weight:700}
+.plat small{display:block;color:var(--muted);font-size:.85rem;margin-top:6px;letter-spacing:.02em}
+.plat .go{margin-top:24px;display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:.3s}
+.plat:hover .go{color:var(--cream)}
+.plat .go svg{width:14px;height:14px;transition:transform .4s var(--ease)}
+.plat:hover .go svg{transform:translateX(5px)}
 
-/* ===== CTA finale ===== */
-.finale{position:relative;text-align:center;padding:130px 0;overflow:hidden}
-.finale::before{content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(135deg,var(--ember-deep),#8f1a06 60%,var(--maroon))}
-.finale .glow{position:absolute;inset:0;z-index:0;
-  background:radial-gradient(50% 60% at 50% 0%,rgba(246,178,60,.4),transparent 60%)}
-.finale .wrap{position:relative;z-index:1}
-.finale h2{font-size:clamp(2.8rem,8vw,6.5rem);color:#fff}
-.finale p{color:#ffe6cf;font-size:1.2rem;margin:18px auto 34px;max-width:44ch}
-.finale .btn-primary{background:#fff;color:var(--ember-deep);box-shadow:0 20px 50px -14px rgba(0,0,0,.5)}
-.finale .phone{margin-top:26px;font-family:'Anton',sans-serif;font-size:clamp(1.8rem,5vw,3rem);color:#fff;
-  display:inline-flex;gap:12px;align-items:center}
+/* Contact / finale */
+.finale{position:relative;z-index:2;text-align:center;padding:150px 0;overflow:hidden;
+  background:radial-gradient(90% 120% at 50% -10%,rgba(217,178,95,.10),transparent 55%),var(--noir)}
+.finale h2{font-size:clamp(2.6rem,7.5vw,6rem);font-weight:800}
+.finale h2 em{font-style:italic;color:var(--gold);font-weight:500}
+.finale p{color:var(--muted);font-size:1.15rem;margin:22px auto 40px;max-width:46ch}
+.finale .phone{margin-top:38px;display:inline-flex;align-items:center;gap:16px;
+  font-family:var(--serif);font-size:clamp(1.8rem,5vw,3rem);color:var(--cream)}
+.finale .phone svg{width:34px;height:34px;color:var(--gold)}
+.finale .hours{margin-top:16px;color:var(--muted-2);letter-spacing:.28em;text-transform:uppercase;font-size:12px}
 
-/* ===== Footer ===== */
-.footer{background:#0d0603;padding:70px 0 34px;position:relative;z-index:1}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
-.footer .logo-badge{margin-bottom:18px}
-.footer p{color:var(--cream-dim);font-size:.95rem;max-width:34ch}
-.footer h4{font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:1px;margin-bottom:16px;color:#fff}
-.footer ul{list-style:none}
-.footer li{margin-bottom:10px;color:var(--cream-dim);font-size:.95rem}
-.footer li a:hover{color:var(--ember)}
-.socials{display:flex;gap:12px;margin-top:8px}
-.socials a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
-  background:var(--glass);border:1px solid var(--glass-line);color:var(--cream);transition:.25s}
-.socials a:hover{background:var(--ember);color:#fff;transform:translateY(-3px)}
-.socials svg{width:20px;height:20px}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-  font-size:.85rem;color:var(--cream-dim)}
+/* Footer */
+.footer{position:relative;z-index:2;background:#050403;padding:80px 0 36px;border-top:1px solid var(--line-soft)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;margin-bottom:56px}
+.footer p.desc{color:var(--muted);font-size:.95rem;margin-top:20px;max-width:32ch}
+.footer h5{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px}
+.footer ul{list-style:none} .footer li{margin-bottom:12px}
+.footer li a,.footer li{color:var(--muted);font-size:.95rem;transition:.3s}
+.footer li a:hover{color:var(--gold-2)}
+.socials{display:flex;gap:11px;margin-top:22px}
+.socials a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--muted);
+  border:1px solid var(--line-soft);transition:.4s var(--ease)}
+.socials a:hover{color:var(--noir);background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
+.socials svg{width:18px;height:18px}
+.foot-bottom{padding-top:26px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;color:var(--muted-2);font-size:.82rem;letter-spacing:.03em}
 
-/* ===== Reveal animation ===== */
-.reveal{opacity:0;transform:translateY(38px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+/* Reveal + word animations */
+.reveal{opacity:0;transform:translateY(42px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
-.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}
-.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+.reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+.reveal.d4{transition-delay:.48s}.reveal.d5{transition-delay:.6s}
+.rw .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em}
+.rw .w i{display:inline-block;transform:translateY(115%);transition:transform 1s var(--ease2);font-style:inherit}
+.rw.in .w i{transform:none}
 
-/* ===== Responsive ===== */
-@media(max-width:900px){
-  .nav-links{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);flex-direction:column;
-    justify-content:center;gap:26px;background:rgba(14,7,4,.96);backdrop-filter:blur(20px);
-    transform:translateX(100%);transition:.4s var(--ease);padding:40px;border-left:1px solid var(--glass-line)}
+@media(max-width:1000px){
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .values{grid-template-columns:repeat(2,1fr)}
+  .deliver-grid{grid-template-columns:repeat(2,1fr)}
+  .story{grid-template-columns:1fr;gap:44px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:760px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:min(82vw,340px);flex-direction:column;
+    justify-content:center;gap:30px;background:rgba(8,6,4,.97);backdrop-filter:blur(24px);
+    transform:translateX(100%);transition:.5s var(--ease);padding:50px;border-left:1px solid var(--line)}
   .nav-links.open{transform:none}
-  .nav-links a{font-size:1.3rem}
+  .nav-links a.link{font-size:1.3rem;font-family:var(--serif)}
   .burger{display:grid;place-items:center}
-  .menu-grid{grid-template-columns:1fr 1fr}
-  .values{grid-template-columns:1fr 1fr}
-  .deliver-grid{grid-template-columns:1fr 1fr}
-  .footer-grid{grid-template-columns:1fr;gap:30px}
-}
-@media(max-width:560px){
+  .section{padding:90px 0}
   .menu-grid{grid-template-columns:1fr}
-  .hero-stats{gap:22px}
-  .section{padding:80px 0}
+  .values{grid-template-columns:1fr}
+  .deliver-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
 }
+@media(max-height:920px){ .hero-scroll{display:none} }
 @media(prefers-reduced-motion:reduce){
-  .hero-media img{animation:none;transform:scale(1.1)}
-  .marquee-track,.ember,.dot{animation:none}
+  .cine video{transform:scale(1.06)!important}
+  .hero-scroll .bar::after{animation:none}
   *{scroll-behavior:auto}
 }
 </style>
 </head>
 <body id="top">
-<div class="backdrop"></div>
-<div class="grain"></div>
 
-<!-- NAV -->
+<!-- Cinematic fixed video -->
+<div class="cine">
+  <video id="bgVideo" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <source src="assets/hero.webm" type='video/webm; codecs="vp9"'>
+    <source src="assets/hero.mp4" type='video/mp4; codecs="avc1.640020"'>
+  </video>
+</div>
+<div class="cine-veil"></div>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Nav -->
 <nav class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="logo" href="#top" aria-label="Coss Fast Food ana sayfa">
+    <a class="logo" href="#top" aria-label="Coss Fast Food">
       <span class="logo-badge">
         <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12.4 3c.4 2.6-1 3.4-1 5 0 .9.6 1.5 1.3 1.5.9 0 1.3-.9 1.3-1.7C15.5 9 17 10.8 17 13.2A5 5 0 0 1 7 13.2c0-2.6 1.5-4.1 2.6-5.5.9-1.2 1.7-2.5 1.7-4.6 0-.7 1-.7 1.1-.1z" fill="#ffd59a"/><path d="M12 13c.2 1.7-1 2.3-1 3.7A2.4 2.4 0 0 0 13.4 19c1.3 0 2.4-1 2.4-2.3 0-1.7-1.3-2.4-2.1-3.7-.4.9-.5 1.1-1 1.1s-.6-.4-.7-1.1z" fill="#fff"/></svg>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12.4 3c.4 2.6-1 3.4-1 5 0 .9.6 1.5 1.3 1.5.9 0 1.3-.9 1.3-1.7C15.5 9 17 10.8 17 13.2A5 5 0 0 1 7 13.2c0-2.6 1.5-4.1 2.6-5.5.9-1.2 1.7-2.5 1.7-4.6 0-.7 1-.7 1.1-.1z" fill="#fff"/><path d="M12 13c.2 1.7-1 2.3-1 3.7A2.4 2.4 0 0 0 13.4 19c1.3 0 2.4-1 2.4-2.3 0-1.7-1.3-2.4-2.1-3.7-.4.9-.5 1.1-1 1.1s-.6-.4-.7-1.1z" fill="#c98a2b"/></svg>
         </span>
-        <span class="logo-word"><b>COSS</b><small>FAST FOOD</small></span>
+        <span class="logo-word"><b>COSS</b><small>FAST&nbsp;FOOD</small></span>
       </span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#menu">Menü</a>
-      <a href="#neden">Neden Coss?</a>
-      <a href="#teslimat">Teslimat</a>
-      <a href="#iletisim">İletişim</a>
-      <a href="#teslimat" class="nav-cta">Sipariş Ver</a>
+      <a class="link" href="#menu">Menü</a>
+      <a class="link" href="#hikaye">Hikaye</a>
+      <a class="link" href="#neden">Neden Coss</a>
+      <a class="link" href="#teslimat">Teslimat</a>
+      <a class="nav-cta" href="#teslimat">Sipariş Ver</a>
     </div>
-    <button class="burger" id="burger" aria-label="Menüyü aç/kapat" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <button class="burger" id="burger" aria-label="Menü" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
     </button>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- Hero -->
 <header class="hero">
-  <div class="hero-media" id="heroMedia">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto"
-           poster="assets/hero-poster.jpg" aria-label="Coss lezzetleri tanıtım videosu">
-      <source src="assets/hero.webm" type='video/webm; codecs="vp9"'>
-      <source src="assets/hero.mp4" type='video/mp4; codecs="avc1.640020"'>
-    </video>
-  </div>
-  <div class="hero-scrim"></div>
-  <div class="hero-embers" id="embers" aria-hidden="true"></div>
-  <div class="wrap hero-content" id="heroContent">
-    <span class="badge-live"><span class="dot"></span>Şu an açık · Sıcacık servis</span>
-    <h1>COSS<span class="l2">FAST FOOD</span></h1>
-    <p class="hero-sub"><b>Közde dönen, elde dilimlenen gerçek lezzet.</b> Tavuk & et döner, közlenmiş burgerler ve dopdolu sandviçler — <span class="ember-text">kapına kadar sıcacık.</span></p>
-    <div class="hero-actions">
-      <a href="#teslimat" class="btn btn-primary">Hemen Sipariş Ver
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="#menu" class="btn btn-ghost">Menüyü Keşfet</a>
-    </div>
-    <div class="hero-stats">
-      <div class="s"><b>5</b><span>İmza Lezzet</span></div>
-      <div class="s"><b>4</b><span>Teslimat Platformu</span></div>
-      <div class="s"><b>~25dk</b><span>Ortalama Teslimat</span></div>
+  <div class="wrap">
+    <span class="eyebrow center reveal">Ateşte Pişer · Dumanı Üstünde</span>
+    <h1>
+      <span class="rw" data-split><span class="row">Coss</span></span>
+      <span class="rw italic" data-split><span class="row"><em>Fast&nbsp;Food</em></span></span>
+      <span class="sm reveal d3">Közün Efendisi</span>
+    </h1>
+    <p class="hero-sub reveal d3">Közde çevrilen <b>tavuk & et döner</b>, elde şekillenen <b>burgerler</b> ve dopdolu <b>sandviçler</b>. Her lokma, ateşin sabrıyla pişer — <b class="gold">dumanı üstünde kapına gelir.</b></p>
+    <div class="hero-actions reveal d4">
+      <a href="#teslimat" class="btn btn-gold">Sipariş Ver
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#menu" class="btn btn-outline">Menüyü Gör</a>
     </div>
   </div>
-  <div class="scroll-hint" aria-hidden="true"><i></i>Kaydır</div>
+  <div class="hero-scroll" aria-hidden="true"><span>Keşfet</span><span class="bar"></span></div>
 </header>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>TAVUK DÖNER</span><span>ET DÖNER</span><span>KÖFTE BURGER</span><span>TAVUK BURGER</span><span>KARIŞIK SANDVİÇ</span>
-    <span>TAVUK DÖNER</span><span>ET DÖNER</span><span>KÖFTE BURGER</span><span>TAVUK BURGER</span><span>KARIŞIK SANDVİÇ</span>
-  </div>
-</div>
-
-<!-- SCRUB "VIDEO" -->
-<section class="scrub" id="scrub" aria-label="Lezzet hikayesi">
-  <div class="scrub-sticky">
-    <video id="scrubVideo" class="scrub-video" muted playsinline preload="auto"
-           poster="assets/hero-poster.jpg" aria-hidden="true">
-      <source src="assets/hero-scrub.webm" type='video/webm; codecs="vp9"'>
-      <source src="assets/hero-scrub.mp4" type='video/mp4; codecs="avc1.640020"'>
-    </video>
-    <div class="scrub-words">
-      <div class="scrub-eyebrow" id="scrubEyebrow">01 · TAZE BAŞLANGIÇ</div>
-      <div class="scrub-word" id="scrubWord">TAPTAZE <span class="stroke">MALZEME</span></div>
-      <p class="scrub-caption" id="scrubCaption">Kaydır ve izle — her şey en taze malzemeyle başlar.</p>
+<!-- Story -->
+<section class="section solid" id="hikaye">
+  <div class="wrap story">
+    <div>
+      <span class="eyebrow reveal">Ateşin Hikayesi</span>
+      <h2 class="reveal d1" style="margin-top:22px">Lezzet <em>aceleye</em><br>gelmez.</h2>
+      <p class="reveal d2">Coss'ta her şey közle başlar. Tavuk ve et, günün erken saatinde marine edilir; şişe dizilir ve saatlerce ateşin karşısında usul usul döner. Burger köftesi elde yoğrulur, sandviçler siparişle hazırlanır. Amacımız tek: siz ilk lokmada <span class="gold">“işte bu”</span> deyin.</p>
+      <div class="kpis reveal d3">
+        <div class="kpi"><b data-count="12">0</b><span>Saat Marinasyon</span></div>
+        <div class="kpi"><b data-count="5">0</b><span>İmza Lezzet</span></div>
+        <div class="kpi"><b data-count="25">0</b><span>Dk. Teslimat</span></div>
+      </div>
     </div>
-    <div class="scrub-progress" id="scrubProgress"></div>
+    <div class="story-media reveal d2">
+      <span class="frame"></span>
+      <img src="assets/hero.jpg" alt="Közde çevrilen döner ustası">
+    </div>
   </div>
 </section>
 
-<!-- MENU -->
-<section class="section" id="menu">
+<hr class="divider">
+
+<!-- Menu -->
+<section class="section panel" id="menu">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Menümüz</span>
-      <h2>İmza <span class="ember-text">Lezzetler</span></h2>
-      <p>Beş yıldız değil — beş imza. Hepsi taze, hepsi elde hazırlanır, hepsi bakınca “şunu yiyeyim” dedirtir.</p>
+    <div class="shead">
+      <span class="eyebrow center reveal">Menümüz</span>
+      <h2 class="reveal d1">İmza <em>Lezzetler</em></h2>
+      <p class="reveal d2">Bakınca iştah açan, tadınca aklınızda kalan beş imza — ve doyuran bir combo.</p>
     </div>
     <div class="menu-grid">
-
-      <article class="card reveal">
-        <div class="card-media"><span class="tag">Çok Satan</span><img src="assets/tavuk-doner.jpg" alt="Tabakta tavuk döner, domates ve turşu ile"></div>
-        <div class="card-body">
-          <h3>Tavuk Döner</h3>
-          <p>Marine edilmiş, közde dilimlenen tavuk. Lavaş, dürüm ya da porsiyon.</p>
-          <div class="card-foot"><span class="price">₺135<small> /porsiyon</small></span><span class="card-order">Sipariş ›</span></div>
+      <article class="dish reveal">
+        <div class="dish-media"><span class="dish-no">01</span><span class="dish-tag">Çok Satan</span>
+          <img src="assets/tavuk-doner.jpg" alt="Tavuk döner"></div>
+        <div class="dish-body"><h3>Tavuk Döner</h3>
+          <p>Marine tavuk, közün üstünde dilim dilim. Lavaş, dürüm ya da porsiyon.</p>
+          <div class="dish-foot"><span class="dish-price">₺135<small> /porsiyon</small></span>
+            <span class="dish-order">Sipariş <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </article>
-
-      <article class="card reveal d1">
-        <div class="card-media"><span class="tag">Klasik</span><img src="assets/et-doner.jpg" alt="Bol malzemeli et döner porsiyonu"></div>
-        <div class="card-body">
-          <h3>Et Döner</h3>
-          <p>Gerçek et, közün üzerinde saatlerce. Yanında soğan, sumak ve közlenmiş biber.</p>
-          <div class="card-foot"><span class="price">₺175<small> /porsiyon</small></span><span class="card-order">Sipariş ›</span></div>
+      <article class="dish reveal d1">
+        <div class="dish-media"><span class="dish-no">02</span><span class="dish-tag">Klasik</span>
+          <img src="assets/et-doner.jpg" alt="Et döner"></div>
+        <div class="dish-body"><h3>Et Döner</h3>
+          <p>Gerçek et, saatlerce ateşin karşısında. Soğan, sumak ve közlenmiş biberle.</p>
+          <div class="dish-foot"><span class="dish-price">₺175<small> /porsiyon</small></span>
+            <span class="dish-order">Sipariş <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </article>
-
-      <article class="card reveal d2">
-        <div class="card-media"><span class="tag">Ev Yapımı Köfte</span><img src="assets/kofte-burger.jpg" alt="Susamlı ekmekte köfte burger"></div>
-        <div class="card-body">
-          <h3>Köfte Burger</h3>
-          <p>El yapımı ızgara köfte, cheddar, taze marul ve domates — susamlı ekmekte.</p>
-          <div class="card-foot"><span class="price">₺155<small> /adet</small></span><span class="card-order">Sipariş ›</span></div>
+      <article class="dish reveal d2">
+        <div class="dish-media"><span class="dish-no">03</span><span class="dish-tag">Ev Yapımı</span>
+          <img src="assets/kofte-burger.jpg" alt="Köfte burger"></div>
+        <div class="dish-body"><h3>Köfte Burger</h3>
+          <p>El yoğurması ızgara köfte, eriyen cheddar, taze marul ve domates.</p>
+          <div class="dish-foot"><span class="dish-price">₺155<small> /adet</small></span>
+            <span class="dish-order">Sipariş <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </article>
-
-      <article class="card reveal">
-        <div class="card-media"><span class="tag">Çıtır</span><img src="assets/tavuk-burger.jpg" alt="Çıtır tavuk burger, çedar ve sos"></div>
-        <div class="card-body">
-          <h3>Tavuk Burger</h3>
-          <p>Çıtır çıtır kızarmış tavuk göğsü, özel sos ve bol malzeme. Isırınca çıtırdar.</p>
-          <div class="card-foot"><span class="price">₺160<small> /adet</small></span><span class="card-order">Sipariş ›</span></div>
+      <article class="dish reveal">
+        <div class="dish-media"><span class="dish-no">04</span><span class="dish-tag">Çıtır</span>
+          <img src="assets/tavuk-burger.jpg" alt="Tavuk burger"></div>
+        <div class="dish-body"><h3>Tavuk Burger</h3>
+          <p>Çıtır çıtır kızarmış tavuk göğsü, özel sos ve bol malzeme.</p>
+          <div class="dish-foot"><span class="dish-price">₺160<small> /adet</small></span>
+            <span class="dish-order">Sipariş <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </article>
-
-      <article class="card reveal d1">
-        <div class="card-media"><span class="tag">Dopdolu</span><img src="assets/karisik-sandvic.jpg" alt="İçi dolu karışık sandviç"></div>
-        <div class="card-body">
-          <h3>Karışık Sandviç</h3>
-          <p>Sucuk, salam, kaşar ve közlenmiş sebzelerle tıka basa dolu bir sandviç.</p>
-          <div class="card-foot"><span class="price">₺140<small> /adet</small></span><span class="card-order">Sipariş ›</span></div>
+      <article class="dish reveal d1">
+        <div class="dish-media"><span class="dish-no">05</span><span class="dish-tag">Dopdolu</span>
+          <img src="assets/karisik-sandvic.jpg" alt="Karışık sandviç"></div>
+        <div class="dish-body"><h3>Karışık Sandviç</h3>
+          <p>Sucuk, salam, kaşar ve közlenmiş sebzelerle tıka basa dolu.</p>
+          <div class="dish-foot"><span class="dish-price">₺140<small> /adet</small></span>
+            <span class="dish-order">Sipariş <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </article>
-
-      <article class="card card-featured reveal d2">
-        <div class="card-media"><span class="tag">En Kârlı</span><img src="assets/hero.jpg" alt="Coss menü kombosu"></div>
-        <div class="card-body">
-          <h3>Coss Combo</h3>
+      <article class="dish reveal d2">
+        <div class="dish-media"><span class="dish-no">06</span><span class="dish-tag">En Kârlı</span>
+          <img src="assets/hero-poster.jpg" alt="Coss combo"></div>
+        <div class="dish-body"><h3>Coss Combo</h3>
           <p>Bir ana lezzet + patates + içecek. Aç geldin, tok gideceksin.</p>
-          <div class="card-foot"><span class="price">₺199<small> /menü</small></span><span class="card-order">Sipariş ›</span></div>
+          <div class="dish-foot"><span class="dish-price">₺199<small> /menü</small></span>
+            <span class="dish-order">Sipariş <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- VALUES -->
-<section class="section" id="neden">
+<!-- Interlude (video reveals) -->
+<section class="interlude">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Neden Coss?</span>
-      <h2>Bakınca <span class="ember-text">Yiyesin</span> Gelsin</h2>
+    <q class="reveal">“Dumanı <b>üstünde.</b>”</q>
+    <div class="sub reveal d2">Sıcacık servis · Kapına kadar</div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="section solid" id="neden">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow center reveal">Neden Coss</span>
+      <h2 class="reveal d1">Farkı <em>hissedin</em></h2>
     </div>
     <div class="values">
       <div class="value reveal">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C9 6 7 8 7 12a5 5 0 0 0 10 0c0-2-1-3-1-3s-1 1-2 1c0-3-2-5-2-8z"/></svg></div>
-        <b>Közde Pişer</b><span>Gerçek ocak, gerçek is kokusu. Mikrodalga yok.</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C9 6 7 8 7 12a5 5 0 0 0 10 0c0-2-1-3-1-3s-1 1-2 1c0-3-2-5-2-8z"/></svg></div>
+        <h4>Közde Pişer</h4><p>Gerçek ateş, gerçek is kokusu. Kestirme yok.</p>
       </div>
       <div class="value reveal d1">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></div>
-        <b>Her Gün Taze</b><span>Sabah gelen malzeme, akşam tabağında.</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12l4 4L19 6"/></svg></div>
+        <h4>Her Gün Taze</h4><p>Sabah gelen malzeme, akşam tabağında.</p>
       </div>
       <div class="value reveal d2">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <b>Hızlı Teslimat</b><span>Ortalama 25 dakikada kapında, sıcacık.</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h4>Hızlı Teslimat</h4><p>Ortalama 25 dakikada kapında, sıcacık.</p>
       </div>
       <div class="value reveal d3">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5 5.5.8-4 4 1 5.5L12 20l-5 2.8 1-5.5-4-4 5.5-.8z"/></svg></div>
-        <b>Uygun Fiyat</b><span>Doyurucu porsiyon, dostça fiyat.</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.4 5 5.6.8-4 4 1 5.6L12 20l-5 2.4 1-5.6-4-4 5.6-.8z"/></svg></div>
+        <h4>Hakkını Verir</h4><p>Doyuran porsiyon, dostça fiyat.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DELIVERY -->
-<section class="section delivery" id="teslimat">
+<hr class="divider">
+
+<!-- Delivery -->
+<section class="section panel" id="teslimat">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Teslimat</span>
-      <h2>Kapına Kadar <span class="ember-text">Getirelim</span></h2>
-      <p>Anlaşmalı olduğumuz platformlardan dilediğinle sipariş ver — Coss lezzeti kapında.</p>
+    <div class="shead">
+      <span class="eyebrow center reveal">Teslimat</span>
+      <h2 class="reveal d1">Kapına <em>getirelim</em></h2>
+      <p class="reveal d2">Anlaşmalı platformların hangisini seversen — Coss lezzeti dakikalar içinde kapında.</p>
     </div>
     <div class="deliver-grid">
-      <a class="deliver p-yemeksepeti reveal" href="#" aria-label="Yemeksepeti'nden sipariş ver">
-        <span class="plat-badge">ys</span>
-        <div><h3>Yemeksepeti</h3><small>Anlaşmalı • Hızlı teslimat</small><span class="go">Sipariş Ver ›</span></div>
-      </a>
-      <a class="deliver p-trendyol reveal d1" href="#" aria-label="Trendyol Yemek'ten sipariş ver">
-        <span class="plat-badge">ty</span>
-        <div><h3>Trendyol Yemek</h3><small>Anlaşmalı • Kampanyalı</small><span class="go">Sipariş Ver ›</span></div>
-      </a>
-      <a class="deliver p-migros reveal d2" href="#" aria-label="Migros Yemek'ten sipariş ver">
-        <span class="plat-badge">m</span>
-        <div><h3>Migros Yemek</h3><small>Anlaşmalı • Geniş bölge</small><span class="go">Sipariş Ver ›</span></div>
-      </a>
-      <a class="deliver p-getir reveal d3" href="#" aria-label="Getir'den sipariş ver">
-        <span class="plat-badge">g</span>
-        <div><h3>Getir Yemek</h3><small>Anlaşmalı • Dakikalar içinde</small><span class="go">Sipariş Ver ›</span></div>
-      </a>
+      <a class="plat reveal" href="#" style="--pc:#ff2b6d;--pc-glow:rgba(255,43,109,.16)" aria-label="Yemeksepeti">
+        <span class="pdot"></span><h3>Yemeksepeti</h3><small>Anlaşmalı · Hızlı teslimat</small>
+        <span class="go">Sipariş Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="plat reveal d1" href="#" style="--pc:#ff7a1a;--pc-glow:rgba(255,122,26,.16)" aria-label="Trendyol Yemek">
+        <span class="pdot"></span><h3>Trendyol Yemek</h3><small>Anlaşmalı · Kampanyalı</small>
+        <span class="go">Sipariş Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="plat reveal d2" href="#" style="--pc:#ff6a2b;--pc-glow:rgba(255,106,43,.16)" aria-label="Migros Yemek">
+        <span class="pdot"></span><h3>Migros Yemek</h3><small>Anlaşmalı · Geniş bölge</small>
+        <span class="go">Sipariş Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="plat reveal d3" href="#" style="--pc:#7b5bd6;--pc-glow:rgba(123,91,214,.18)" aria-label="Getir Yemek">
+        <span class="pdot"></span><h3>Getir Yemek</h3><small>Anlaşmalı · Dakikalar içinde</small>
+        <span class="go">Sipariş Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </div>
 </section>
 
-<!-- FINALE -->
+<!-- Finale -->
 <section class="finale" id="iletisim">
-  <div class="glow"></div>
   <div class="wrap">
-    <span class="eyebrow" style="color:#ffe6cf">Aç mısın?</span>
-    <h2 class="reveal">Bugün Coss Var</h2>
-    <p class="reveal d1">Telefonu aç, uygulamayı aç ya da uğra. Gerisini biz hallederiz.</p>
-    <a href="#teslimat" class="btn btn-primary reveal d2">Sipariş Ver
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <div class="phone reveal d3">
-      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg>
+    <span class="eyebrow center reveal">Aç mısın?</span>
+    <h2 class="reveal d1" style="margin-top:20px">Bugün <em>Coss</em> var</h2>
+    <p class="reveal d2">Telefonu aç, uygulamayı aç ya da uğra. Gerisini ateşe biz bırakırız.</p>
+    <div class="reveal d3"><a href="#teslimat" class="btn btn-gold">Hemen Sipariş Ver
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <a class="phone reveal d4" href="tel:+905000000000">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg>
       0 (500) 000 00 00
-    </div>
+    </a>
+    <div class="hours reveal d4">Her gün 11:00 – 24:00</div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- Footer -->
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
       <div>
         <span class="logo-badge">
           <span class="logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12.4 3c.4 2.6-1 3.4-1 5 0 .9.6 1.5 1.3 1.5.9 0 1.3-.9 1.3-1.7C15.5 9 17 10.8 17 13.2A5 5 0 0 1 7 13.2c0-2.6 1.5-4.1 2.6-5.5.9-1.2 1.7-2.5 1.7-4.6 0-.7 1-.7 1.1-.1z" fill="#ffd59a"/><path d="M12 13c.2 1.7-1 2.3-1 3.7A2.4 2.4 0 0 0 13.4 19c1.3 0 2.4-1 2.4-2.3 0-1.7-1.3-2.4-2.1-3.7-.4.9-.5 1.1-1 1.1s-.6-.4-.7-1.1z" fill="#fff"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12.4 3c.4 2.6-1 3.4-1 5 0 .9.6 1.5 1.3 1.5.9 0 1.3-.9 1.3-1.7C15.5 9 17 10.8 17 13.2A5 5 0 0 1 7 13.2c0-2.6 1.5-4.1 2.6-5.5.9-1.2 1.7-2.5 1.7-4.6 0-.7 1-.7 1.1-.1z" fill="#fff"/><path d="M12 13c.2 1.7-1 2.3-1 3.7A2.4 2.4 0 0 0 13.4 19c1.3 0 2.4-1 2.4-2.3 0-1.7-1.3-2.4-2.1-3.7-.4.9-.5 1.1-1 1.1s-.6-.4-.7-1.1z" fill="#c98a2b"/></svg>
           </span>
-          <span class="logo-word"><b>COSS</b><small>FAST FOOD</small></span>
+          <span class="logo-word"><b>COSS</b><small>FAST&nbsp;FOOD</small></span>
         </span>
-        <p>Közde pişen döner, burger ve sandviç. Bakınca yiyesin gelen lezzetler, kapına kadar sıcacık.</p>
+        <p class="desc">Közde pişen döner, burger ve sandviç. Ateşin sabrıyla hazırlanır, dumanı üstünde kapına gelir.</p>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14v-1c0-.6.4-1 1-1z"/></svg></a>
           <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.6.2.4.9 1.5 2 2.4 1.3 1.2 1.7 1.3 1.9 1.2.2-.1.5-.6.7-.8.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .2 0 .8-.3 1.4z"/></svg></a>
         </div>
       </div>
-      <div>
-        <h4>Menü</h4>
-        <ul>
-          <li><a href="#menu">Tavuk Döner</a></li>
-          <li><a href="#menu">Et Döner</a></li>
-          <li><a href="#menu">Köfte Burger</a></li>
-          <li><a href="#menu">Tavuk Burger</a></li>
-          <li><a href="#menu">Karışık Sandviç</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Sipariş & İletişim</h4>
-        <ul>
-          <li><a href="#teslimat">Yemeksepeti</a></li>
-          <li><a href="#teslimat">Trendyol Yemek</a></li>
-          <li><a href="#teslimat">Migros Yemek</a></li>
-          <li><a href="#teslimat">Getir Yemek</a></li>
-          <li>Her gün 11:00 – 24:00</li>
-        </ul>
-      </div>
+      <div><h5>Menü</h5><ul>
+        <li><a href="#menu">Tavuk Döner</a></li><li><a href="#menu">Et Döner</a></li>
+        <li><a href="#menu">Köfte Burger</a></li><li><a href="#menu">Tavuk Burger</a></li>
+        <li><a href="#menu">Karışık Sandviç</a></li></ul></div>
+      <div><h5>Sipariş</h5><ul>
+        <li><a href="#teslimat">Yemeksepeti</a></li><li><a href="#teslimat">Trendyol Yemek</a></li>
+        <li><a href="#teslimat">Migros Yemek</a></li><li><a href="#teslimat">Getir Yemek</a></li></ul></div>
+      <div><h5>İletişim</h5><ul>
+        <li>0 (500) 000 00 00</li><li>Her gün 11:00 – 24:00</li>
+        <li><a href="#top">Adres & Yol Tarifi</a></li></ul></div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="yr"></span> Coss Fast Food · Tüm hakları saklıdır.</span>
+      <span>© <span id="yr"></span> Coss Fast Food — Tüm hakları saklıdır.</span>
       <span>Közde pişer · Elde hazırlanır · Kapına gelir</span>
     </div>
   </div>
@@ -546,148 +543,101 @@ h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:.95;l
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* year */
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  /* reduced motion: keep hero video still on its poster frame */
-  var heroVid = document.querySelector('.hero-video');
-  if(reduce && heroVid){ heroVid.removeAttribute('autoplay'); heroVid.removeAttribute('loop'); try{heroVid.pause();}catch(e){} }
+  /* ---- Robust video autoplay ---- */
+  var bg = document.getElementById('bgVideo');
+  function tryPlay(){ if(!bg) return; var p = bg.play(); if(p&&p.catch) p.catch(function(){}); }
+  if(bg){
+    bg.muted = true; bg.setAttribute('muted','');
+    tryPlay();
+    ['loadeddata','canplay','canplaythrough'].forEach(function(e){ bg.addEventListener(e, tryPlay); });
+    ['click','touchstart','scroll','keydown','pointerdown'].forEach(function(e){
+      window.addEventListener(e, tryPlay, {once:true, passive:true});
+    });
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
+    if(reduce){ bg.removeAttribute('autoplay'); bg.removeAttribute('loop'); try{bg.pause();}catch(e){} }
+  }
 
-  /* nav scroll state */
+  /* ---- Nav ---- */
   var nav = document.getElementById('nav');
-  function onScrollNav(){ nav.classList.toggle('scrolled', window.scrollY > 30); }
-  onScrollNav();
-
-  /* mobile menu */
+  function navState(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+  navState();
   var burger = document.getElementById('burger'), links = document.getElementById('navLinks');
   burger.addEventListener('click', function(){
-    var open = links.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open);
+    var o = links.classList.toggle('open'); burger.setAttribute('aria-expanded', o);
   });
   links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ links.classList.remove('open'); burger.setAttribute('aria-expanded', false); });
+    a.addEventListener('click', function(){ links.classList.remove('open'); burger.setAttribute('aria-expanded',false); });
   });
 
-  /* embers */
-  if(!reduce){
-    var box = document.getElementById('embers');
-    for(var i=0;i<26;i++){
-      var e = document.createElement('span'); e.className='ember';
-      e.style.left = Math.random()*100 + '%';
-      e.style.animationDuration = (5+Math.random()*7)+'s';
-      e.style.animationDelay = (Math.random()*8)+'s';
-      var s = .5+Math.random()*1.4; e.style.transform='scale('+s+')';
-      box.appendChild(e);
-    }
-  }
-
-  /* reveal on scroll */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
-  }, {threshold:.16, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-
-  /* hero parallax + scrub — single rAF scroll loop */
-  var heroMedia = document.getElementById('heroMedia');
-  var heroContent = document.getElementById('heroContent');
-  var scrub = document.getElementById('scrub');
-  var scrubVideo = document.getElementById('scrubVideo');
-  var eyebrow = document.getElementById('scrubEyebrow');
-  var word = document.getElementById('scrubWord');
-  var caption = document.getElementById('scrubCaption');
-  var progress = document.getElementById('scrubProgress');
-
-  var frames = [
-    {eye:'01 · TAPTAZE', word:'TAPTAZE <span class="stroke">MALZEME</span>', cap:'Her şey en taze malzemeyle başlar — kaydır ve izle.'},
-    {eye:'02 · KÖZDE', word:'TAVUK <span class="stroke">DÖNER</span>', cap:'Marine tavuk, közün üstünde dilim dilim, dumanı üstünde.'},
-    {eye:'03 · SULU', word:'KÖFTE <span class="stroke">BURGER</span>', cap:'Eriyen çedar, sulu köfte — tam kararında pişer.'},
-    {eye:'04 · HEPSİ COSS’TA', word:'DUMANI <span class="stroke">ÜSTÜNDE</span>', cap:'Döner, burger, sandviç ve patates — sıcacık, kapına hazır.'}
-  ];
-  var curFrame = -1;
-
-  // Scroll-scrub video setup
-  var scrubDur = 0, scrubTarget = 0, scrubHasMeta = false, scrubPrimed = false;
-  function markScrubMeta(){
-    if(!isNaN(scrubVideo.duration) && scrubVideo.duration > 0){
-      scrubDur = scrubVideo.duration; scrubHasMeta = true;
-    }
-  }
-  ['loadedmetadata','durationchange','canplay','loadeddata'].forEach(function(ev){
-    scrubVideo.addEventListener(ev, markScrubMeta);
-  });
-  if(scrubVideo.readyState >= 1) markScrubMeta();  // metadata may already be ready
-  // Prime the paused video once (play→pause) so scroll-seeks actually paint frames
-  function primeScrub(){
-    if(scrubPrimed || reduce) return; scrubPrimed = true;
-    var pr = scrubVideo.play();
-    if(pr && pr.then){ pr.then(function(){ scrubVideo.pause(); }).catch(function(){ scrubPrimed = false; }); }
-    else { try{ scrubVideo.pause(); }catch(e){} }
-  }
-  scrubVideo.addEventListener('loadeddata', primeScrub);
-  ['scroll','pointerdown','touchstart','keydown'].forEach(function(ev){
-    window.addEventListener(ev, primeScrub, {passive:true});
+  /* ---- Split headlines into animated words ---- */
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    el.querySelectorAll('.row').forEach(function(row){
+      var html = row.innerHTML;
+      // wrap plain text nodes' words; keep inner tags (em) intact as single unit
+      var tmp = document.createElement('div'); tmp.innerHTML = html;
+      var out = '';
+      tmp.childNodes.forEach(function(node){
+        if(node.nodeType===3){
+          node.textContent.split(/(\s+)/).forEach(function(tok){
+            if(tok.trim()==='') { out += tok; return; }
+            out += '<span class="w"><i>'+tok+'</i></span>';
+          });
+        } else {
+          out += '<span class="w"><i>'+node.outerHTML+'</i></span>';
+        }
+      });
+      row.innerHTML = out;
+    });
+    // stagger
+    el.querySelectorAll('.w i').forEach(function(i,idx){ i.style.transitionDelay = (idx*0.09)+'s'; });
   });
 
-  function clamp(v){ return v<0?0:v>1?1:v; }
+  /* ---- Reveal on scroll ---- */
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  }, {threshold:.18, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal,[data-split]').forEach(function(el){ io.observe(el); });
 
-  function loop(){
-    var y = window.scrollY;
+  /* ---- Count up ---- */
+  var cio = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el = en.target, to = +el.dataset.count, t0=null, dur=1500;
+      function step(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur);
+        el.textContent = Math.round(to*(1-Math.pow(1-p,3)));
+        if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step); cio.unobserve(el);
+    });
+  }, {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
 
-    /* hero parallax */
-    if(heroMedia){
-      heroMedia.style.transform = 'translateY('+(y*0.35)+'px)';
-      var vh = window.innerHeight;
-      var fade = clamp(1 - y/(vh*0.85));
-      heroContent.style.opacity = fade;
-      heroContent.style.transform = 'translateY('+(y*0.18)+'px)';
-    }
-
-    /* scrub */
-    var rect = scrub.getBoundingClientRect();
-    var total = scrub.offsetHeight - window.innerHeight;
-    var p = clamp((-rect.top)/total);
-    if(rect.bottom>0 && rect.top<window.innerHeight){
-      progress.style.width = (p*100)+'%';
-      /* scrub the real video timeline with scroll */
-      if(scrubHasMeta && scrubDur){
-        scrubTarget = clamp(p) * (scrubDur - 0.05);
-      }
-      /* subtle zoom for depth */
-      scrubVideo.style.transform = 'scale('+(1.04 + p*0.10)+')';
-      /* switch kinetic words */
-      var fi = Math.min(frames.length-1, Math.round(p*(frames.length-1)));
-      if(fi!==curFrame){
-        curFrame=fi;
-        eyebrow.textContent = frames[fi].eye;
-        word.innerHTML = frames[fi].word;
-        caption.textContent = frames[fi].cap;
-        word.animate ? word.animate([{opacity:0,transform:'translateY(20px)'},{opacity:1,transform:'none'}],{duration:450,easing:'cubic-bezier(.22,.61,.36,1)'}) : 0;
-      }
-    }
-    onScrollNav();
-    ticking=false;
-  }
-
-  /* Smoothly ease the scrub video toward the scroll target (buttery seek) */
-  var scrubCur = 0;
-  function scrubEase(){
-    if(scrubHasMeta){
-      scrubCur += (scrubTarget - scrubCur) * 0.18;
-      if(Math.abs(scrubTarget - scrubCur) < 0.004) scrubCur = scrubTarget;
-      if(scrubVideo.readyState >= 2){
-        try{ scrubVideo.currentTime = scrubCur; }catch(e){}
-      }
-    }
-    requestAnimationFrame(scrubEase);
-  }
-  requestAnimationFrame(scrubEase);
-
+  /* ---- Parallax (video + hero) ---- */
+  var cineVid = document.querySelector('.cine video');
+  var hero = document.querySelector('.hero .wrap');
   var ticking=false;
-  function requestLoop(){ if(!ticking){ ticking=true; requestAnimationFrame(loop);} }
-  window.addEventListener('scroll', requestLoop, {passive:true});
-  window.addEventListener('resize', requestLoop);
-  loop();
+  function frame(){
+    var y = window.scrollY;
+    if(cineVid) cineVid.style.transform = 'scale(1.06) translateY('+(y*0.06)+'px)';
+    if(hero && y < window.innerHeight){
+      hero.style.transform = 'translateY('+(y*0.16)+'px)';
+      hero.style.opacity = Math.max(0, 1 - y/(window.innerHeight*0.8));
+    }
+    navState(); ticking=false;
+  }
+  window.addEventListener('scroll', function(){ if(!ticking){ticking=true;requestAnimationFrame(frame);} }, {passive:true});
+  frame();
+
+  /* ---- Cursor glow (desktop only) ---- */
+  if(matchMedia('(pointer:fine)').matches && !reduce){
+    var glow = document.getElementById('cursorGlow');
+    window.addEventListener('pointermove', function(e){
+      glow.style.opacity = 1;
+      glow.style.left = e.clientX+'px'; glow.style.top = e.clientY+'px';
+    });
+    window.addEventListener('pointerleave', function(){ glow.style.opacity = 0; });
+  }
 })();
 </script>
 </body>
