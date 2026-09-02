@@ -1,59 +1,59 @@
 # Coss Fast Food — Web Sitesi
 
-Coss Fast Food dükkanı için tek sayfalık, animasyonlu ve tamamen bağımsız (statik) bir tanıtım web sitesi.
+Coss Fast Food için tek sayfalık, siyah temalı, sinematik video arka planlı tanıtım sitesi.
+Kurulum gerektirmez: saf HTML + CSS + JS, tek dosya (`index.html`) ve `assets/` klasörü.
 
 ## Öne çıkanlar
 
-- **Sinematik video hero** — dumanı tüten yemekleri gösteren tanıtım videosu tam ekran, sessiz, otomatik oynayan hareketli arka plan; üzerinde cam (glassmorphism) panel ve yükselen köz kıvılcımı animasyonu.
-- **Kaydırdıkça hareket eden video (scroll-scrub)** — sabitlenen video, sayfayı kaydırdıkça timeline'ı taranır: malzemeler → tavuk döner → burger → dumanı üstünde tam takım. Üzerinde dev kinetik yazılar değişir.
-- **Şeffaf / cam görünümlü** kartlar ve butonlar (`backdrop-filter` blur).
-- **Scroll ile açılan (reveal) animasyonlar** — `IntersectionObserver` ile aşamalı görünürlük.
-- **Akıcı geçiş efektleri**, hover animasyonları, kayan (marquee) lezzet şeridi.
-- **Tam responsive** — mobilde hamburger menü, esnek grid.
-- `prefers-reduced-motion` desteği (hareket hassasiyeti olan kullanıcılar için).
-
-## Menü (ürünler)
-
-Tavuk Döner · Et Döner · Köfte Burger · Tavuk Burger · Karışık Sandviç (+ Coss Combo)
-
-## Anlaşmalı teslimat platformları
-
-Yemeksepeti · Trendyol Yemek · Migros Yemek · Getir Yemek
-
-> Teslimat kartlarındaki `href="#"` bağlantılarını gerçek restoran linklerinizle güncelleyin.
-> Finaldeki `0 (500) 000 00 00` telefon numarasını ve footer'daki çalışma saatlerini kendi bilgilerinizle değiştirin.
+- **Siyah tema** — saf siyah zemin, krem metin, ateş kırmızısı ve kehribar vurgular.
+- **Tam ekran sabit video arka planı** — sayfanın arkasında yaşayan, sessiz ve otomatik oynayan
+  tanıtım videosu. Hero ve ara-perdede görünür, diğer bölümler opak siyahla üstünü kapatır.
+- **"Yemek Sipariş Et" butonu** — tıklanınca sayfa `easeInOutCubic` yumuşamasıyla ~1.15 sn'de
+  sipariş bölümüne kayar; varışta platform kartları sırayla darbe animasyonuyla vurgulanır.
+- **Animasyonlu geçişler** — scroll ile açılan (reveal) bölümler, sayaçlar, hover kalkışları,
+  nabız atan CTA noktası, altı çizilen menü bağlantıları.
+- **Gerçek platform logoları** — Yemeksepeti, Trendyol, Migros ve Getir.
+- **İletişim bilgileri** — telefon, adres, çalışma saatleri, e-posta ve sosyal medya.
+- **Ürün/menü bölümü yoktur** (istenildiği gibi).
+- Tam responsive, `prefers-reduced-motion` desteği, yukarı çık butonu.
 
 ## Dosya yapısı
 
 ```
-index.html            # Tüm site (HTML + CSS + JS tek dosyada)
+index.html                 # Tüm site (HTML + CSS + JS)
 assets/
-  logo.svg            # Beyaz arka planlı Coss logosu
-  favicon.svg         # Sekme ikonu
-  hero.mp4 / .webm    # Hero arka plan videosu (otomatik oynayan)
-  hero-scrub.mp4/.webm# Scroll ile taranan (scrub) video — tüm kareler keyframe
-  hero-poster.jpg     # Video yüklenene kadar gösterilen poster
-  hero.jpg            # Combo kartı görseli
-  tavuk-doner.jpg
-  et-doner.jpg
-  kofte-burger.jpg
-  tavuk-burger.jpg
-  karisik-sandvic.jpg
+  hero.mp4 / hero.webm     # Arka plan videosu (H.264 + VP9)
+  hero-poster.jpg          # Video yüklenene kadar gösterilen kare
+  hero.jpg                 # Hikaye bölümündeki atmosfer görseli
+  logo.svg / favicon.svg   # Coss logosu ve sekme ikonu
+  logos/                   # Sipariş platformlarının logoları
+    yemeksepeti.svg  trendyol.svg  migros.svg  getir.svg
 ```
 
-> Videolar hem `.webm` (VP9) hem `.mp4` (H.264) olarak sunulur — tüm modern tarayıcılar
-> ve Safari desteklenir. Kendi tanıtım videonuzla değiştirmek isterseniz aynı adlarla
-> `assets/` içine koyun (scrub sürümü için tüm karelerin keyframe olması akıcılığı artırır).
+## Kişiselleştirme
+
+Yayına almadan önce güncellenmesi gerekenler:
+
+| Ne | Nerede |
+|---|---|
+| Sipariş bağlantıları | `#siparis` bölümündeki 4 `<a class="plat" href="#">` |
+| Telefon | `tel:+905000000000` ve görünen numara |
+| Adres | İletişim bölümündeki "Örnek Mah. …" satırı |
+| E-posta | `info@cossfastfood.com` |
+| Sosyal medya | İletişim bölümündeki `.socials` bağlantıları |
 
 ## Yayınlama
 
-Kurulum gerektirmez. `index.html`'i herhangi bir statik sunucuya (GitHub Pages, Netlify, Vercel, kendi hosting'iniz) yüklemeniz yeterli. Yerelde denemek için:
+Statik bir site olduğu için herhangi bir yere yüklenebilir (GitHub Pages, Netlify, Vercel).
+Yerelde denemek için — videonun oynaması bir sunucu gerektirir, dosyaya çift tıklamak yetmez:
 
 ```bash
 python3 -m http.server 8000
 # tarayıcıda http://localhost:8000
 ```
 
-## Görsel kaynakları
+## Notlar
 
-Yemek fotoğrafları Wikimedia Commons'tan alınmış serbest lisanslı görsellerdir. İşletmenizin kendi fotoğraflarıyla değiştirmeniz, sitenin özgünlüğü ve iştah açıcılığı için önerilir.
+- Video hem `.webm` (VP9) hem `.mp4` (H.264) olarak sunulur; tüm modern tarayıcılar ve Safari çalışır.
+- Platform logoları Wikimedia Commons kaynaklıdır ve yalnızca anlaşmalı sipariş kanallarını
+  göstermek için kullanılır; markalar ilgili şirketlere aittir.
