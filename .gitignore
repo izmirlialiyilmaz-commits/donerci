@@ -1,4 +1,3 @@
 # Önizleme / geçici ekran görüntüleri
-s-*.png
-v-*.png
-shot*.png
+*.png
+!assets/**/*.png
