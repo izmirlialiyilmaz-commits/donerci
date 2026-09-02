@@ -5,17 +5,22 @@ Kurulum gerektirmez: saf HTML + CSS + JS, tek dosya (`index.html`) ve `assets/` 
 
 ## Öne çıkanlar
 
-- **Siyah tema** — saf siyah zemin, krem metin, ateş kırmızısı ve kehribar vurgular.
-- **Tam ekran sabit video arka planı** — sayfanın arkasında yaşayan, sessiz ve otomatik oynayan
-  tanıtım videosu. Hero ve ara-perdede görünür, diğer bölümler opak siyahla üstünü kapatır.
-- **"Yemek Sipariş Et" butonu** — tıklanınca sayfa `easeInOutCubic` yumuşamasıyla ~1.15 sn'de
-  sipariş bölümüne kayar; varışta platform kartları sırayla darbe animasyonuyla vurgulanır.
-- **Animasyonlu geçişler** — scroll ile açılan (reveal) bölümler, sayaçlar, hover kalkışları,
-  nabız atan CTA noktası, altı çizilen menü bağlantıları.
-- **Gerçek platform logoları** — Yemeksepeti, Trendyol, Migros ve Getir.
-- **İletişim bilgileri** — telefon, adres, çalışma saatleri, e-posta ve sosyal medya.
+- **Açılış (intro) animasyonu** — tam ekran siyah perde, harf harf açılan "COSS", dolan ilerleme
+  çubuğu ve 0→100 sayaç; bitince perde ikiye ayrılıp siteyi açar.
+- **Siyah tema** + tam ekran sabit **video arka planı** (sayfanın arkasında yaşar).
+- **Ağır scroll efektleri**
+  - Sabitlenen (pinned) 3 sahne: *Taze Malzeme → Közde Pişer → Dumanı Üstünde*.
+    Scroll ilerledikçe sahneler çapraz geçiş yapar, görseller ölçeklenir, yan ray ve sayaç dolar.
+  - **Yatay kaydırma galerisi** — dikey scroll ile yatay akan kart şeridi ve dev kontur yazılar.
+  - Üstte scroll ilerleme çubuğu, hero'da fare parallax'ı, hıza tepki veren kayan yazı şeridi.
+- **Etkileşimli efektler** — özel imleç (hover'da büyüyüp etiket gösterir), mıknatıslı butonlar,
+  3D eğilen platform kartları.
+- **"Yemek Sipariş Et"** — `easeInOutCubic` ile ~1.25 sn animasyonlu kaydırma; hedefi her karede
+  yeniden hesaplar, varışta kartları sırayla darbe animasyonuyla vurgular.
+- **Gerçek platform logoları** — Yemeksepeti, Trendyol, Migros, Getir.
+- **İletişim bilgileri** — telefon, adres, çalışma saatleri, e-posta, sosyal medya.
 - **Ürün/menü bölümü yoktur** (istenildiği gibi).
-- Tam responsive, `prefers-reduced-motion` desteği, yukarı çık butonu.
+- Tam responsive, `prefers-reduced-motion` desteği (intro ve efektler kapanır), yukarı çık butonu.
 
 ## Dosya yapısı
 
@@ -24,7 +29,8 @@ index.html                 # Tüm site (HTML + CSS + JS)
 assets/
   hero.mp4 / hero.webm     # Arka plan videosu (H.264 + VP9)
   hero-poster.jpg          # Video yüklenene kadar gösterilen kare
-  hero.jpg                 # Hikaye bölümündeki atmosfer görseli
+  hero.jpg                 # Atmosfer görseli
+  frames/f1..f5.jpg        # Videodan çıkarılan sahne/galeri kareleri
   logo.svg / favicon.svg   # Coss logosu ve sekme ikonu
   logos/                   # Sipariş platformlarının logoları
     yemeksepeti.svg  trendyol.svg  migros.svg  getir.svg
