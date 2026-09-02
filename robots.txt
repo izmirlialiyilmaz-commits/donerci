@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://izmirlialiyilmaz-commits.github.io/donerci/sitemap.xml

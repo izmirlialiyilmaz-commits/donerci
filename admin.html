@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coss Fast Food — Yönetim Paneli</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --bg:#0a0908; --panel:#141110; --card:#1a1615; --card2:#201b19;
+  --cream:#f4ede4; --muted:#a89b8e; --muted-2:#786b60;
+  --fire:#ff3d16; --amber:#ffb62e; --ok:#33c07a; --warn:#ffb62e; --err:#ff5a4d;
+  --line:rgba(244,237,228,.14);
+  --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  --radius:14px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--cream);line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;line-height:1.2}
+p{margin:0}
+label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.03em;color:var(--muted);margin-bottom:7px}
+input,textarea{width:100%;background:var(--card2);border:1px solid var(--line);border-radius:10px;
+  color:var(--cream);font:inherit;font-size:14px;padding:11px 13px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--fire);outline-offset:1px}
+input::placeholder,textarea::placeholder{color:var(--muted-2)}
+button{font:inherit;cursor:pointer;border:0}
+.field{margin-bottom:16px}
+.hint{font-size:12px;color:var(--muted-2);margin-top:6px}
+.wrap{max-width:880px;margin:0 auto;padding:32px 20px 90px}
+
+/* ---- Gate ---- */
+#gate{position:fixed;inset:0;z-index:10;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}
+#gate.hidden{display:none}
+.gate-box{max-width:380px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.gate-box h1{font-size:1.3rem;margin-bottom:6px}
+.gate-box p{color:var(--muted);font-size:.92rem;margin-bottom:20px}
+.gate-box .err{color:var(--err);font-size:.85rem;margin-top:10px;display:none}
+.gate-box .err.show{display:block}
+
+/* ---- Layout ---- */
+#panel{display:none}
+#panel.show{display:block}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.topbar h1{font-size:1.4rem}
+.topbar a{color:var(--muted);font-size:.85rem;text-decoration:none;border:1px solid var(--line);padding:8px 14px;border-radius:100px}
+.topbar a:hover{color:var(--cream);border-color:var(--fire)}
+
+.banner{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:24px;font-size:.92rem;color:var(--muted)}
+.banner b{color:var(--cream)}
+
+.loadbox{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:28px}
+.loadbox h2{font-size:1.05rem;margin-bottom:10px}
+.loadrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.status{font-size:.85rem;padding:8px 12px;border-radius:8px;margin-top:12px;display:none}
+.status.show{display:block}
+.status.ok{background:rgba(51,192,122,.12);color:var(--ok);border:1px solid rgba(51,192,122,.3)}
+.status.err{background:rgba(255,90,77,.12);color:var(--err);border:1px solid rgba(255,90,77,.3)}
+.status.info{background:rgba(255,182,46,.1);color:var(--amber);border:1px solid rgba(255,182,46,.28)}
+
+fieldset{border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:22px}
+legend{padding:0 8px;font-weight:800;font-size:.95rem;color:var(--amber);letter-spacing:.02em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+
+.logo-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.logo-preview{width:72px;height:72px;border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden;flex:0 0 auto}
+.logo-preview img{max-width:88%;max-height:88%;object-fit:contain}
+.logo-controls{flex:1;min-width:220px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:100px;font-weight:800;
+  font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;transition:transform .15s ease}
+.btn-primary{color:#180800;background:linear-gradient(135deg,var(--amber),var(--fire))}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-ghost{color:var(--cream);background:var(--card2);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--amber)}
+
+.downloadbar{position:sticky;bottom:0;background:rgba(10,9,8,.92);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);padding:18px 20px;display:flex;gap:14px;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;margin:0 -20px}
+.checklist{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-top:22px;display:none}
+.checklist.show{display:block}
+.checklist h3{font-size:1rem;margin-bottom:12px;color:var(--ok)}
+.checklist ol{margin:0;padding-left:20px;color:var(--muted);font-size:.9rem;line-height:1.8}
+.checklist code{background:var(--card2);padding:2px 6px;border-radius:5px;color:var(--amber);font-size:.85em}
+</style>
+</head>
+<body>
+
+<!-- ============ PASSWORD GATE ============ -->
+<div id="gate">
+  <div class="gate-box">
+    <h1>Coss Yönetim Paneli</h1>
+    <p>Devam etmek için erişim şifresini girin.</p>
+    <div class="field">
+      <input type="password" id="gatePass" placeholder="Şifre" autocomplete="off">
+    </div>
+    <button class="btn btn-primary" id="gateBtn" style="width:100%;justify-content:center">Giriş Yap</button>
+    <p class="err" id="gateErr">Şifre yanlış, tekrar deneyin.</p>
+    <p class="hint" style="margin-top:16px">Not: Bu, gelişigüzel bir ziyaretçiyi caydırmak için basit bir kilit — gerçek bir güvenlik sistemi değildir. Bu sayfanın adresini kimseyle paylaşmayın. Şifreyi değiştirmek isterseniz dosyadaki <code>ADMIN_PASS</code> değerini düzenleyin.</p>
+  </div>
+</div>
+
+<!-- ============ MAIN PANEL ============ -->
+<div id="panel">
+  <div class="wrap">
+    <div class="topbar">
+      <h1>Coss Yönetim Paneli</h1>
+      <span style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="index.html" target="_blank" rel="noopener">Siteyi Görüntüle ↗</a>
+        <button type="button" class="btn btn-ghost" id="lockBtn" style="padding:8px 14px;font-size:.8rem;text-transform:none;letter-spacing:0">Kilitle</button>
+      </span>
+    </div>
+
+    <div class="banner">
+      <b>Nasıl çalışır:</b> Bu panel, sitenizin <code>index.html</code> dosyasını okur, formda düzenlediğiniz
+      bilgileri işler ve <b>güncellenmiş dosyayı bilgisayarınıza indirir</b>. Panel doğrudan internete
+      bir şey yayınlamaz — indirdiğiniz dosyaları her zamanki gibi GitHub'a (veya kullandığınız hosting'e)
+      siz yüklersiniz. Bu sürümde <b>ürün/menü, video ve fotoğraflar</b> düzenlenemez — yalnızca logo,
+      metinler, iletişim bilgileri, sipariş linkleri ve SEO ayarları.
+    </div>
+
+    <!-- STEP 1: LOAD -->
+    <div class="loadbox">
+      <h2>1. Mevcut içeriği yükle</h2>
+      <p class="hint" id="autoLoadHint">Sayfa açık olduğu adresten <code>index.html</code> otomatik yükleniyor…</p>
+      <div class="loadrow">
+        <label style="margin:0" for="fileInput"><span class="btn btn-ghost">Dosyadan Seç (index.html)</span></label>
+        <input type="file" id="fileInput" accept=".html,text/html" style="display:none">
+        <span class="hint" style="margin:0">— otomatik yükleme başarısız olursa veya farklı bir kopyayı düzenlemek isterseniz kullanın.</span>
+      </div>
+      <div class="status" id="loadStatus"></div>
+    </div>
+
+    <form id="cmsForm" autocomplete="off">
+      <fieldset>
+        <legend>Logo</legend>
+        <div class="logo-row">
+          <div class="logo-preview"><img id="logoPreview" alt="Logo önizleme"></div>
+          <div class="logo-controls">
+            <label for="logoFile">Yeni logo yükle (kare görsel önerilir)</label>
+            <input type="file" id="logoFile" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+            <p class="hint">Kare olmayan görseller beyaz zemin üzerine ortalanır. Yüklediğinizde nav ikonu, sekme ikonu (favicon) ve Apple ikonu otomatik olarak yeniden üretilir.</p>
+          </div>
+        </div>
+        <div class="field" style="margin-top:16px;max-width:220px">
+          <label for="logoSize">Logo Boyutu — nav çubuğu (px)</label>
+          <input type="number" id="logoSize" min="20" max="120" step="1">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Hero (Ana Ekran) Metinleri</legend>
+        <div class="field"><label for="heroEyebrow">Üst etiket</label><input type="text" id="heroEyebrow"></div>
+        <div class="grid2">
+          <div class="field"><label for="heroTitle1">Başlık — 1. satır</label><input type="text" id="heroTitle1"></div>
+          <div class="field"><label for="heroTitle2">Başlık — 2. satır (vurgulu)</label><input type="text" id="heroTitle2"></div>
+        </div>
+        <div class="field"><label for="heroLede">Alt açıklama</label><textarea id="heroLede" rows="3"></textarea></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>İletişim</legend>
+        <div class="grid2">
+          <div class="field"><label for="phone">Telefon</label><input type="text" id="phone" placeholder="0 (500) 000 00 00"></div>
+          <div class="field"><label for="email">E-posta</label><input type="email" id="email" placeholder="info@ornek.com"></div>
+        </div>
+        <div class="field"><label for="address">Adres</label><textarea id="address" rows="2"></textarea></div>
+        <div class="field"><label for="hours">Çalışma Saatleri</label><input type="text" id="hours"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sipariş Platformu Linkleri</legend>
+        <div class="grid2">
+          <div class="field"><label for="orderYemeksepeti">Yemeksepeti</label><input type="url" id="orderYemeksepeti" placeholder="https://"></div>
+          <div class="field"><label for="orderTrendyol">Trendyol Yemek</label><input type="url" id="orderTrendyol" placeholder="https://"></div>
+          <div class="field"><label for="orderMigros">Migros Yemek</label><input type="url" id="orderMigros" placeholder="https://"></div>
+          <div class="field"><label for="orderGetir">Getir Yemek</label><input type="url" id="orderGetir" placeholder="https://"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sosyal Medya</legend>
+        <div class="grid2">
+          <div class="field"><label for="socialInstagram">Instagram</label><input type="url" id="socialInstagram" placeholder="https://instagram.com/…"></div>
+          <div class="field"><label for="socialFacebook">Facebook</label><input type="url" id="socialFacebook" placeholder="https://facebook.com/…"></div>
+        </div>
+        <div class="field" style="max-width:calc(50% - 8px)"><label for="socialWhatsapp">WhatsApp</label><input type="url" id="socialWhatsapp" placeholder="https://wa.me/905000000000"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>SEO</legend>
+        <div class="field"><label for="seoTitle">Sayfa Başlığı</label><input type="text" id="seoTitle"></div>
+        <div class="field"><label for="seoDescription">Meta Açıklama</label><textarea id="seoDescription" rows="2"></textarea></div>
+        <div class="field"><label for="ogImage">Paylaşım Görseli (dosya yolu)</label><input type="text" id="ogImage" placeholder="assets/hero-poster.jpg">
+          <p class="hint">WhatsApp/Instagram'da link paylaşılınca görünen görsel. Sadece zaten <code>assets/</code> klasöründe olan bir dosyanın yolunu yazın.</p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Footer</legend>
+        <div class="field"><label for="footerTagline">Alt slogan</label><input type="text" id="footerTagline"></div>
+      </fieldset>
+    </form>
+
+    <div class="downloadbar">
+      <span class="hint" id="downloadHint" style="margin:0">Önce yukarıdan mevcut içeriği yükleyin.</span>
+      <button class="btn btn-primary" id="downloadBtn" disabled>Güncellenmiş Dosyaları İndir</button>
+    </div>
+
+    <div class="checklist" id="checklist">
+      <h3>✓ Dosyalar indirildi — sıradaki adımlar</h3>
+      <ol id="checklistItems"></ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   Change this to set your own admin password.
+   This is a convenience lock, NOT real security — anyone who can
+   view this file's source can read it. Keep this page's URL private.
+   ============================================================ */
+var ADMIN_PASS = "cossadmin2025";
+
+/* Must match robots.txt / sitemap.xml. Update all three together if you move
+   to a custom domain — social-media crawlers need an absolute image URL and
+   do not execute JavaScript, so this can't be resolved automatically at runtime. */
+var SITE_BASE_URL = "https://izmirlialiyilmaz-commits.github.io/donerci/";
+function toAbsoluteUrl(pathOrUrl){
+  var v = (pathOrUrl || '').trim();
+  if(v === '') return SITE_BASE_URL + 'assets/hero-poster.jpg';
+  if(/^https?:\/\//i.test(v)) return v;
+  return SITE_BASE_URL + v.replace(/^\/+/, '');
+}
+function toDisplayPath(url){
+  var v = (url || '').trim();
+  return v.indexOf(SITE_BASE_URL) === 0 ? v.slice(SITE_BASE_URL.length) : v;
+}
+
+/* ---------------- Gate ---------------- */
+var gate = document.getElementById('gate');
+var panel = document.getElementById('panel');
+var gatePass = document.getElementById('gatePass');
+var gateBtn = document.getElementById('gateBtn');
+var gateErr = document.getElementById('gateErr');
+
+function unlock(){
+  gate.classList.add('hidden');
+  panel.classList.add('show');
+  try{ localStorage.setItem('cossAdminUnlocked', '1'); }catch(e){}
+  init();
+}
+function tryUnlock(){
+  if(gatePass.value === ADMIN_PASS){ unlock(); }
+  else { gateErr.classList.add('show'); gatePass.value=''; gatePass.focus(); }
+}
+gateBtn.addEventListener('click', tryUnlock);
+gatePass.addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); });
+try{
+  if(localStorage.getItem('cossAdminUnlocked') === '1') unlock();
+}catch(e){}
+
+/* ============================================================
+   Field definitions: how to read a value FROM the loaded document
+   and how to write a value BACK into it. Kept declarative so the
+   same table drives both load and save — one source of truth,
+   fewer places for a mistake to hide.
+   ============================================================ */
+function telHref(v){
+  var d = (v||'').trim();
+  var plus = d.charAt(0)==='+' ? '+' : '';
+  return 'tel:' + plus + d.replace(/[^0-9]/g,'');
+}
+function mailHref(v){ return 'mailto:' + (v||'').trim(); }
+function safeUrl(v){ v=(v||'').trim(); return v === '' ? '#' : v; }
+
+var TEXT_FIELDS = ['heroEyebrow','heroTitle1','heroTitle2','heroLede','address','hours','footerTagline'];
+var LINK_FIELDS = ['orderYemeksepeti','orderTrendyol','orderMigros','orderGetir','socialInstagram','socialFacebook','socialWhatsapp'];
+
+function readField(doc, key){
+  var el = doc.querySelector('[data-cms="'+key+'"]');
+  if(!el) return '';
+  var tag = el.tagName.toLowerCase();
+  if(key === 'ogImage') return toDisplayPath(el.getAttribute('content') || '');
+  if(tag === 'title') return el.textContent.trim();
+  if(tag === 'meta') return el.getAttribute('content') || '';
+  if(tag === 'img') return el.getAttribute('src') || '';
+  if(key === 'phone' || key === 'email') return el.textContent.trim();
+  if(TEXT_FIELDS.indexOf(key) !== -1) return el.textContent;
+  if(LINK_FIELDS.indexOf(key) !== -1) return el.getAttribute('href') || '';
+  return el.textContent || '';
+}
+
+function writeField(doc, key, value){
+  var els = doc.querySelectorAll('[data-cms="'+key+'"]');
+  els.forEach(function(el){
+    var tag = el.tagName.toLowerCase();
+    if(key === 'ogImage'){ el.setAttribute('content', toAbsoluteUrl(value)); return; }
+    if(tag === 'title'){ el.textContent = value; return; }
+    if(tag === 'meta'){ el.setAttribute('content', value); return; }
+    if(key === 'phone'){ el.textContent = value; el.setAttribute('href', telHref(value)); return; }
+    if(key === 'email'){ el.textContent = value; el.setAttribute('href', mailHref(value)); return; }
+    if(LINK_FIELDS.indexOf(key) !== -1){ el.setAttribute('href', safeUrl(value)); return; }
+    if(TEXT_FIELDS.indexOf(key) !== -1){ el.textContent = value; return; }
+  });
+}
+
+var SIMPLE_KEYS = TEXT_FIELDS.concat(LINK_FIELDS).concat(['seoTitle','seoDescription','ogImage','phone','email']);
+
+/* ---------------- State ---------------- */
+var loadedDoc = null;
+var logoOutputs = null; // {name, blob}[] once a new logo has been processed
+
+/* ---------------- Load current index.html ---------------- */
+var loadStatus = document.getElementById('loadStatus');
+function showStatus(msg, kind){
+  loadStatus.textContent = msg;
+  loadStatus.className = 'status show ' + (kind || 'info');
+}
+
+function populateForm(doc){
+  SIMPLE_KEYS.forEach(function(key){
+    var el = document.getElementById(key);
+    if(el) el.value = readField(doc, key);
+  });
+  var logoImg = doc.querySelector('[data-cms="logo"]');
+  document.getElementById('logoPreview').src = logoImg ? logoImg.getAttribute('src') : '';
+  var sizeMatch = logoImg && logoImg.style && logoImg.style.width ? parseInt(logoImg.style.width,10) : NaN;
+  document.getElementById('logoSize').value = isNaN(sizeMatch) ? 38 : sizeMatch;
+}
+
+function loadDocument(doc, sourceLabel){
+  var found = doc.querySelectorAll('[data-cms]').length;
+  if(found === 0){
+    showStatus('Bu dosyada tanınan alan bulunamadı. Doğru index.html dosyasını seçtiğinizden emin olun.', 'err');
+    return;
+  }
+  loadedDoc = doc;
+  populateForm(doc);
+  showStatus('Yüklendi (' + sourceLabel + ') — ' + found + ' alan bulundu. Aşağıdan düzenleyebilirsiniz.', 'ok');
+  document.getElementById('downloadBtn').disabled = false;
+  document.getElementById('downloadHint').textContent = 'Değişiklikleri yaptıktan sonra indirin.';
+}
+
+function tryAutoLoad(){
+  if(location.protocol === 'file:'){
+    document.getElementById('autoLoadHint').textContent = 'Dosya doğrudan açıldığı için otomatik yükleme yapılamıyor — "Dosyadan Seç" ile index.html dosyasını seçin.';
+    return;
+  }
+  fetch('index.html', {cache:'no-store'}).then(function(res){
+    if(!res.ok) throw new Error('http '+res.status);
+    return res.text();
+  }).then(function(html){
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    loadDocument(doc, 'bu sayfanın klasöründen otomatik');
+  }).catch(function(){
+    showStatus('Otomatik yükleme başarısız oldu. "Dosyadan Seç" ile index.html dosyasını elle seçin.', 'info');
+  });
+}
+
+document.getElementById('fileInput').addEventListener('change', function(e){
+  var file = e.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(){
+    var doc = new DOMParser().parseFromString(reader.result, 'text/html');
+    loadDocument(doc, file.name);
+  };
+  reader.onerror = function(){ showStatus('Dosya okunamadı, tekrar deneyin.', 'err'); };
+  reader.readAsText(file);
+});
+
+/* ---------------- Logo upload → resize on <canvas> ---------------- */
+function processLogoFile(file){
+  return new Promise(function(resolve, reject){
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function(){
+      var targets = [
+        {name:'logo.png', size:640},
+        {name:'apple-touch-icon.png', size:180},
+        {name:'favicon-32.png', size:32}
+      ];
+      Promise.all(targets.map(function(t){
+        var canvas = document.createElement('canvas');
+        canvas.width = t.size; canvas.height = t.size;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, t.size, t.size);
+        var scale = Math.min(t.size/img.naturalWidth, t.size/img.naturalHeight);
+        var w = img.naturalWidth*scale, h = img.naturalHeight*scale;
+        ctx.drawImage(img, (t.size-w)/2, (t.size-h)/2, w, h);
+        return new Promise(function(res){ canvas.toBlob(function(blob){ res({name:t.name, blob:blob}); }, 'image/png'); });
+      })).then(function(outputs){
+        URL.revokeObjectURL(url);
+        resolve(outputs);
+      });
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); reject(new Error('Görsel okunamadı')); };
+    img.src = url;
+  });
+}
+
+document.getElementById('logoFile').addEventListener('change', function(e){
+  var file = e.target.files[0];
+  if(!file) return;
+  processLogoFile(file).then(function(outputs){
+    logoOutputs = outputs;
+    var main = outputs.filter(function(o){ return o.name === 'logo.png'; })[0];
+    document.getElementById('logoPreview').src = URL.createObjectURL(main.blob);
+  }).catch(function(err){
+    showStatus('Logo işlenemedi: ' + err.message, 'err');
+  });
+});
+
+/* ---------------- Apply form → document, then serialize ---------------- */
+function applyFormAndSerialize(){
+  var doc = loadedDoc;
+
+  SIMPLE_KEYS.forEach(function(key){
+    var el = document.getElementById(key);
+    if(el) writeField(doc, key, el.value);
+  });
+
+  // logo size (and src, if a new logo was uploaded — points to the filename we ask them to save)
+  var logoImg = doc.querySelector('[data-cms="logo"]');
+  if(logoImg){
+    var size = parseInt(document.getElementById('logoSize').value, 10);
+    if(!isNaN(size) && size > 0){
+      logoImg.style.width = size + 'px';
+      logoImg.style.height = size + 'px';
+    }
+    if(logoOutputs) logoImg.setAttribute('src', 'assets/logo.png');
+  }
+  var iconLink = doc.querySelector('link[rel="icon"]');
+  if(iconLink && logoOutputs) iconLink.setAttribute('href', 'assets/favicon-32.png');
+  var appleLink = doc.querySelector('link[rel="apple-touch-icon"]');
+  if(appleLink && logoOutputs) appleLink.setAttribute('href', 'assets/apple-touch-icon.png');
+
+  // JSON-LD: merged into whatever is already there, never rebuilt from scratch.
+  // Free-text address/hours can't be reliably split into streetAddress vs.
+  // addressLocality/Region or into day-by-day opening hours, so those parts of
+  // the existing structured data are left exactly as they are — only the
+  // fields we have a trustworthy 1:1 source for are overwritten. This means a
+  // save can never silently erase or wrongly guess data the form doesn't ask for.
+  var jsonLd = doc.getElementById('jsonLd');
+  if(jsonLd){
+    var data;
+    try{ data = JSON.parse(jsonLd.textContent); }catch(e){ data = {}; }
+    data["@context"] = data["@context"] || "https://schema.org";
+    data["@type"] = data["@type"] || "FastFoodRestaurant";
+    data.name = data.name || "Coss Fast Food";
+    data.url = SITE_BASE_URL;
+    data.image = toAbsoluteUrl(document.getElementById('ogImage').value);
+
+    var phoneVal = document.getElementById('phone').value.trim();
+    if(phoneVal) data.telephone = telHref(phoneVal).replace('tel:', '');
+
+    var emailVal = document.getElementById('email').value.trim();
+    if(emailVal) data.email = emailVal;
+
+    var addressVal = document.getElementById('address').value.trim();
+    if(addressVal){
+      if(!data.address || typeof data.address !== 'object') data.address = {"@type": "PostalAddress"};
+      data.address.streetAddress = addressVal.replace(/\n+/g, ', ');
+      data.address.addressCountry = data.address.addressCountry || "TR";
+      // addressLocality / addressRegion (and openingHoursSpecification, servesCuisine,
+      // priceRange elsewhere in `data`) are intentionally left untouched above.
+    }
+
+    var socials = ['socialInstagram','socialFacebook','socialWhatsapp']
+      .map(function(k){ return document.getElementById(k).value.trim(); })
+      .filter(function(v){ return v && v !== '#'; });
+    if(socials.length) data.sameAs = socials;
+
+    jsonLd.textContent = '\n' + JSON.stringify(data, null, 2) + '\n';
+  }
+
+  return '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
+}
+
+function downloadBlob(filename, blob){
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+document.getElementById('downloadBtn').addEventListener('click', function(){
+  if(!loadedDoc) return;
+  var html = applyFormAndSerialize();
+  downloadBlob('index.html', new Blob([html], {type:'text/html;charset=utf-8'}));
+
+  var items = ['<li><code>index.html</code> dosyasını indirdiğiniz yerden alıp repo\'nuzun ana klasörüne (mevcut index.html\'in üzerine) koyun.</li>'];
+
+  if(logoOutputs){
+    logoOutputs.forEach(function(o, i){
+      setTimeout(function(){ downloadBlob(o.name, o.blob); }, 350 * (i+1));
+    });
+    items.push('<li><code>logo.png</code>, <code>apple-touch-icon.png</code> ve <code>favicon-32.png</code> dosyalarını <code>assets/</code> klasörüne koyun (üzerine yazın).</li>');
+  }
+  items.push('<li>Hepsini GitHub\'a yükleyip (commit + push) yayınlayın.</li>');
+
+  document.getElementById('checklistItems').innerHTML = items.join('');
+  document.getElementById('checklist').classList.add('show');
+  document.getElementById('checklist').scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+
+/* ---------------- Lock (sign out on this device) ---------------- */
+document.getElementById('lockBtn').addEventListener('click', function(){
+  try{ localStorage.removeItem('cossAdminUnlocked'); }catch(e){}
+  location.reload();
+});
+
+/* ---------------- Init ---------------- */
+function init(){
+  tryAutoLoad();
+}
+})();
+</script>
+</body>
+</html>

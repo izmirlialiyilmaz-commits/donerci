@@ -3,15 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Coss Fast Food — Ateşin Başında</title>
-<meta name="description" content="Coss Fast Food — közün başında pişen lezzet. Yemeksepeti, Trendyol Yemek, Migros Yemek ve Getir üzerinden sipariş ver, dumanı üstünde kapına gelsin.">
+<title data-cms="seoTitle">Coss Fast Food — Ateşin Başında</title>
+<meta name="description" content="Coss Fast Food — közün başında pişen lezzet. Yemeksepeti, Trendyol Yemek, Migros Yemek ve Getir üzerinden sipariş ver, dumanı üstünde kapına gelsin." data-cms="seoDescription">
 <meta name="theme-color" content="#000000">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="apple-touch-icon" href="assets/logo.svg">
-<meta property="og:title" content="Coss Fast Food — Ateşin Başında">
-<meta property="og:description" content="Közün başında pişen lezzet. Dumanı üstünde kapına gelsin.">
-<meta property="og:image" content="assets/hero-poster.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="" id="canonicalLink">
+<meta property="og:title" content="Coss Fast Food — Ateşin Başında" data-cms="seoTitle">
+<meta property="og:description" content="Közün başında pişen lezzet. Dumanı üstünde kapına gelsin." data-cms="seoDescription">
+<meta property="og:image" content="https://izmirlialiyilmaz-commits.github.io/donerci/assets/hero-poster.jpg" data-cms="ogImage">
+<meta property="og:url" content="https://izmirlialiyilmaz-commits.github.io/donerci/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coss Fast Food — Ateşin Başında" data-cms="seoTitle">
+<meta name="twitter:description" content="Közün başında pişen lezzet. Dumanı üstünde kapına gelsin." data-cms="seoDescription">
+<meta name="twitter:image" content="https://izmirlialiyilmaz-commits.github.io/donerci/assets/hero-poster.jpg" data-cms="ogImage">
+<script type="application/ld+json" id="jsonLd" data-cms="jsonld">
+{
+  "@context": "https://schema.org",
+  "@type": "FastFoodRestaurant",
+  "name": "Coss Fast Food",
+  "url": "https://izmirlialiyilmaz-commits.github.io/donerci/",
+  "image": "https://izmirlialiyilmaz-commits.github.io/donerci/assets/hero-poster.jpg",
+  "telephone": "+905000000000",
+  "email": "info@cossfastfood.com",
+  "servesCuisine": ["Fast Food", "Döner", "Burger"],
+  "priceRange": "₺₺",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Örnek Mah. Örnek Cad. No: 1",
+    "addressLocality": "Merkez",
+    "addressRegion": "İzmir",
+    "addressCountry": "TR"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "11:00",
+    "closes": "24:00"
+  }],
+  "sameAs": []
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,13 +89,8 @@ p{margin:0}
 .nav.scrolled{background:rgba(10,9,8,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav.scrolled .nav-in{padding:12px 0}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-badge{display:flex;align-items:center;gap:9px;background:#fff;padding:7px 14px 7px 8px;border-radius:12px}
-.brand-mark{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto;
-  background:linear-gradient(140deg,var(--amber),var(--fire))}
-.brand-mark svg{width:18px;height:18px}
-.brand-text{display:flex;flex-direction:column;line-height:1}
-.brand-text b{font-family:var(--display);font-size:15px;color:#181210;letter-spacing:.02em}
-.brand-text small{font-size:7px;font-weight:800;letter-spacing:.28em;color:var(--fire)}
+.brand-badge{display:flex;align-items:center;background:#fff;padding:6px;border-radius:12px;line-height:0}
+.brand-logo{display:block;width:38px;height:38px;object-fit:contain;flex:0 0 auto}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:13px;font-weight:600;letter-spacing:.03em;color:var(--muted);transition:color .2s}
 .nav-links a:hover{color:var(--cream)}
@@ -82,7 +111,7 @@ p{margin:0}
 /* ============ HERO CONTENT ============ */
 .hero-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:110px 0 60px}
 .hero-title{font-size:clamp(2.6rem,9vw,6.2rem);color:var(--cream);margin:18px 0 20px}
-.hero-title span{display:block;color:var(--amber)}
+.hero-title .accent{display:block;color:var(--amber)}
 .hero-lede{max-width:44ch;color:#e8ddd0;font-size:clamp(1rem,2vw,1.15rem);margin-bottom:32px}
 .hero-lede b{color:#fff;font-weight:700}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
@@ -152,7 +181,7 @@ p{margin:0}
 .contact-row .icon svg{width:19px;height:19px}
 .contact-row h4{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
   color:var(--muted-2);margin:0 0 5px}
-.contact-row p,.contact-row a{color:var(--cream);font-size:1rem;font-weight:500}
+.contact-row p,.contact-row a{color:var(--cream);font-size:1rem;font-weight:500;white-space:pre-line}
 .contact-row a:hover{color:var(--amber)}
 .contact-card{padding:32px 28px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
 .contact-card h3{font-size:1.35rem;color:var(--cream);text-transform:none;margin-bottom:10px}
@@ -208,10 +237,7 @@ section[id]{scroll-margin-top:80px}
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="Coss Fast Food">
       <span class="brand-badge">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12.4 3c.4 2.6-1 3.4-1 5 0 .9.6 1.5 1.3 1.5.9 0 1.3-.9 1.3-1.7C15.5 9 17 10.8 17 13.2A5 5 0 0 1 7 13.2c0-2.6 1.5-4.1 2.6-5.5.9-1.2 1.7-2.5 1.7-4.6 0-.7 1-.7 1.1-.1z" fill="#fff"/><path d="M12 13c.2 1.7-1 2.3-1 3.7A2.4 2.4 0 0 0 13.4 19c1.3 0 2.4-1 2.4-2.3 0-1.7-1.3-2.4-2.1-3.7-.4.9-.5 1.1-1 1.1s-.6-.4-.7-1.1z" fill="#ffd24a"/></svg>
-        </span>
-        <span class="brand-text"><b>COSS</b><small>FAST&nbsp;FOOD</small></span>
+        <img class="brand-logo" src="assets/logo.png" alt="Coss Fast Food logosu" data-cms="logo">
       </span>
     </a>
     <div class="nav-links">
@@ -246,9 +272,9 @@ section[id]{scroll-margin-top:80px}
 
   <div class="hero-content">
     <div class="wrap">
-      <span class="eyebrow reveal in">Közün Efendisi</span>
-      <h1 class="hero-title reveal in">Coss<span>Fast Food</span></h1>
-      <p class="hero-lede reveal in">Köz yanar, duman yükselir, lezzet olur. Acele etmeden pişen, <b>dumanı üstünde</b> kapına gelen bir lezzet.</p>
+      <span class="eyebrow reveal in" data-cms="heroEyebrow">Közün Efendisi</span>
+      <h1 class="hero-title reveal in"><span data-cms="heroTitle1">Coss</span><span class="accent" data-cms="heroTitle2">Fast Food</span></h1>
+      <p class="hero-lede reveal in" data-cms="heroLede">Köz yanar, duman yükselir, lezzet olur. Acele etmeden pişen, dumanı üstünde kapına gelen bir lezzet.</p>
       <div class="hero-actions reveal in">
         <a class="btn btn-fire" href="#siparis">
           Yemek Sipariş Et
@@ -302,28 +328,28 @@ section[id]{scroll-margin-top:80px}
       <p class="reveal delay-2">Alıştığın uygulamadan sipariş ver — Coss lezzeti dumanı üstünde kapına gelsin.</p>
     </div>
     <div class="order-grid">
-      <a class="platform reveal" href="#" aria-label="Yemeksepeti üzerinden sipariş ver">
+      <a class="platform reveal" href="#" data-cms="orderYemeksepeti" aria-label="Yemeksepeti üzerinden sipariş ver">
         <span class="platform-logo"><img src="assets/logos/yemeksepeti.svg" alt="Yemeksepeti" loading="lazy"></span>
         <span>
           <span class="platform-name">Yemeksepeti</span>
           <span class="platform-go">Sipariş ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
-      <a class="platform reveal delay-1" href="#" aria-label="Trendyol Yemek üzerinden sipariş ver">
+      <a class="platform reveal delay-1" href="#" data-cms="orderTrendyol" aria-label="Trendyol Yemek üzerinden sipariş ver">
         <span class="platform-logo"><img src="assets/logos/trendyol.svg" alt="Trendyol Yemek" loading="lazy"></span>
         <span>
           <span class="platform-name">Trendyol Yemek</span>
           <span class="platform-go">Sipariş ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
-      <a class="platform reveal delay-2" href="#" aria-label="Migros Yemek üzerinden sipariş ver">
+      <a class="platform reveal delay-2" href="#" data-cms="orderMigros" aria-label="Migros Yemek üzerinden sipariş ver">
         <span class="platform-logo"><img src="assets/logos/migros.svg" alt="Migros Yemek" loading="lazy"></span>
         <span>
           <span class="platform-name">Migros Yemek</span>
           <span class="platform-go">Sipariş ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
-      <a class="platform dark reveal delay-3" href="#" aria-label="Getir Yemek üzerinden sipariş ver">
+      <a class="platform dark reveal delay-3" href="#" data-cms="orderGetir" aria-label="Getir Yemek üzerinden sipariş ver">
         <span class="platform-logo"><img src="assets/logos/getir.svg" alt="Getir Yemek" loading="lazy"></span>
         <span>
           <span class="platform-name">Getir Yemek</span>
@@ -345,19 +371,20 @@ section[id]{scroll-margin-top:80px}
       <div class="contact-list reveal">
         <div class="contact-row">
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg></span>
-          <span><h4>Telefon</h4><a href="tel:+905000000000">0 (500) 000 00 00</a></span>
+          <span><h4>Telefon</h4><a href="tel:+905000000000" data-cms="phone">0 (500) 000 00 00</a></span>
         </div>
         <div class="contact-row">
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <span><h4>Adres</h4><p>Örnek Mah. Örnek Cad. No: 1<br>Merkez / İzmir</p></span>
+          <span><h4>Adres</h4><p data-cms="address">Örnek Mah. Örnek Cad. No: 1
+Merkez / İzmir</p></span>
         </div>
         <div class="contact-row">
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <span><h4>Çalışma Saatleri</h4><p>Her gün 11:00 – 24:00</p></span>
+          <span><h4>Çalışma Saatleri</h4><p data-cms="hours">Her gün 11:00 – 24:00</p></span>
         </div>
         <div class="contact-row">
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 9 6 9-6"/></svg></span>
-          <span><h4>E-posta</h4><a href="mailto:info@cossfastfood.com">info@cossfastfood.com</a></span>
+          <span><h4>E-posta</h4><a href="mailto:info@cossfastfood.com" data-cms="email">info@cossfastfood.com</a></span>
         </div>
       </div>
       <div class="contact-card reveal delay-1">
@@ -368,9 +395,9 @@ section[id]{scroll-margin-top:80px}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </a>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14v-1c0-.6.4-1 1-1z"/></svg></a>
-          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.6.2.4.9 1.5 2 2.4 1.3 1.2 1.7 1.3 1.9 1.2.2-.1.5-.6.7-.8.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .2 0 .8-.3 1.4z"/></svg></a>
+          <a href="#" data-cms="socialInstagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" data-cms="socialFacebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14v-1c0-.6.4-1 1-1z"/></svg></a>
+          <a href="#" data-cms="socialWhatsapp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.6.2.4.9 1.5 2 2.4 1.3 1.2 1.7 1.3 1.9 1.2.2-.1.5-.6.7-.8.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .2 0 .8-.3 1.4z"/></svg></a>
         </div>
       </div>
     </div>
@@ -381,13 +408,21 @@ section[id]{scroll-margin-top:80px}
 <footer class="footer">
   <div class="wrap footer-in">
     <span>© <span id="yr"></span> Coss Fast Food — Tüm hakları saklıdır.</span>
-    <span>Közde pişer · Dumanı üstünde gelir</span>
+    <span data-cms="footerTagline">Közde pişer · Dumanı üstünde gelir</span>
   </div>
 </footer>
 
 <script>
 (function(){
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- Canonical URL: always the current page's real address, no manual config needed ---- */
+  var canonical = document.getElementById('canonicalLink');
+  if(canonical && location.protocol !== 'file:'){
+    canonical.setAttribute('href', location.origin + location.pathname);
+  } else if(canonical){
+    canonical.remove(); // an empty/file:// canonical would be worse than none
+  }
 
   /* ---- Video autoplay: attributes are already set in HTML (muted+autoplay+playsinline),
      this is only a best-effort nudge for browsers that need a retry ---- */
